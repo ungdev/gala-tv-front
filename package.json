@@ -1,0 +1,33 @@
+{
+  "name": "tv-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.13.5",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "node-static": "^0.7.11",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-notifications": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "start": "static build --host-address 0.0.0.0 --port 8080 --spa",
+    "lint": "prettier --single-quote --print-width 100 --tab-width 2 --no-semi --write \"src/**/*.js\""
+  },
+  "proxy": "http://localhost:3000",
+  "devDependencies": {
+    "prettier": "^1.16.4"
+  }
+}

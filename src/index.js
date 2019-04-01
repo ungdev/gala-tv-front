@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import configureStore, { history } from './store'
 import registerServiceWorker from './registerServiceWorker'
 import App from './containers/app'
-
+import './root.css'
 import 'redux-notifications/lib/styles.css'
 
 const target = document.querySelector('#root')

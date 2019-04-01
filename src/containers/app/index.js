@@ -4,34 +4,54 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { Notifs as Notifications } from 'redux-notifications'
 import 'antd/dist/antd.css'
 
+import { autoLogin } from '../../modules/login'
 import Home from '../home'
 import asyncComponent from '../../components/async'
-
+import Return from '../login/Return'
+import Login from '../login/Login'
 const Dashboard = asyncComponent(() => import('../dashboard/Dashboard'))
-const Login = asyncComponent(() => import('../login/Login'))
-const App = props => (
-  <div style={{ height: '100%' }}>
-    <Notifications />
-    <Switch>
-      <Route path={process.env.REACT_APP_BASEURL} exact component={Home} />
-      {props.auth ? (
-        <Route
-          path={process.env.REACT_APP_BASEURL + 'admin'}
-          component={Dashboard}
-        />
-      ) : (
-        <Route
-          path={process.env.REACT_APP_BASEURL + 'admin'}
-          component={Login}
-        />
-      )}
-      <Redirect from='*' to='/' />
-    </Switch>
-  </div>
-)
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    props.autoLogin()
+  }
+  render() {
+    return (
+      <div style={{ height: '100%' }}>
+        <Notifications />
+        <Switch>
+          <Route path={process.env.REACT_APP_BASEURL} exact component={Home} />
+          <Route
+            path={process.env.REACT_APP_BASEURL + 'login'}
+            component={Return}
+          />
+          {this.props.token ? (
+            <Route
+              path={process.env.REACT_APP_BASEURL + 'admin'}
+              component={Dashboard}
+            />
+          ) : (
+            <Route
+              path={process.env.REACT_APP_BASEURL + 'admin'}
+              component={Login}
+            />
+          )}
+          <Redirect from='*' to='/' />
+        </Switch>
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = state => ({
-  auth: state.user.user
+  token: state.login.token
 })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => ({
+  autoLogin: () => dispatch(autoLogin())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

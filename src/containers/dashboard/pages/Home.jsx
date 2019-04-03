@@ -1,9 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './home.css'
+import { Button } from 'antd'
+import { request } from '../../../modules/user'
 
 class Home extends React.Component {
   render() {
-    return (<div>Admin connected</div>)
+    const { admin } = this.props.user
+    if (admin) return <div>ADMIN HOME</div>
+    return (
+      <div className='home-container'>
+        <h1>Vous n'êtes pas administrateur</h1>
+        <p>
+          Vous pouvez demander à avoir accès aux droits en appuyant sur ce
+          boutton :
+        </p>
+        <Button type='primary' onClick={this.props.request}>
+          Demander des droits administrateurs
+        </Button>
+      </div>
+    )
   }
 }
 
@@ -11,7 +27,9 @@ const mapStateToProps = state => ({
   user: state.user.user
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  request: () => dispatch(request())
+})
 
 export default connect(
   mapStateToProps,

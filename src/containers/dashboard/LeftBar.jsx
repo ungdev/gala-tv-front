@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Spin } from 'antd'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../modules/login'
@@ -38,6 +38,9 @@ class LeftBar extends React.Component {
     })
   }
   render() {
+    const { user } = this.props
+    if (!user) return <Spin />
+    const { admin } = user
     return (
       <Sider breakpoint='lg' collapsedWidth='0' width={250} theme='dark'>
         <Link to={'/'}>
@@ -58,18 +61,23 @@ class LeftBar extends React.Component {
               <span>Accueil</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='events'>
-            <Link to={'/admin/events'}>
-              <Icon type='calendar' />
-              <span>Événements</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='users'>
-            <Link to={'/admin/users'}>
-              <Icon type='team' />
-              <span>Gestion des utilisateurs</span>
-            </Link>
-          </Menu.Item>
+          {/* ADMIN ONLY BUTTONS */}
+          {admin && (
+            <Menu.Item key='events'>
+              <Link to={'/admin/events'}>
+                <Icon type='calendar' />
+                <span>Événements</span>
+              </Link>
+            </Menu.Item>
+          )}
+          {admin && (
+            <Menu.Item key='users'>
+              <Link to={'/admin/users'}>
+                <Icon type='team' />
+                <span>Gestion des utilisateurs</span>
+              </Link>
+            </Menu.Item>
+          )}
           <Menu.Item key='logout' onClick={this.props.logout}>
             <Icon type='logout' />
             <span>Se déconnecter</span>

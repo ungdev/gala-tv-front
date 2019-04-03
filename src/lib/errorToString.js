@@ -3,8 +3,10 @@ export default error => {
   switch (error) {
     case 'INVALID_FORM':
       return 'Formulaire incomplet'
-      case 'NOT_ADMIN':
-        return 'Vous devez avoir des droits administrateurs pour accéder à cette page'
+    case 'NOT_ADMIN':
+      return 'Vous devez avoir des droits administrateurs pour accéder à cette page'
+    case 'ALREADY_ADMIN':
+      return 'Cette personne est déjà administrateur'
     case 'INVALID_TOKEN':
       return 'Jeton invalide, veuillez vous reconnecter'
     case 'UNKNOWN':

@@ -13,7 +13,10 @@ export default (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        user: action.payload
+        user: {
+          ...action.payload,
+          admin: action.payload.permissions.findIndex(u => u === 'admin') !== -1
+        }
       }
 
     default:
@@ -29,7 +32,10 @@ export const fetchUser = () => {
     }
     try {
       const res = await axios.get('user', {
-        headers: { Authorization: `Basic ${authToken}`, 'X-Date': moment().format() }
+        headers: {
+          Authorization: `Basic ${authToken}`,
+          'X-Date': moment().format()
+        }
       })
       dispatch({ type: SET_USER, payload: res.data })
     } catch (err) {

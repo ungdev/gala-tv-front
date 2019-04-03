@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Layout from './layout'
 import Home from './pages/Home'
 import Events from './pages/Events'
-
+import UsersManagement from './pages/UserManagement'
 
 const baseUrl = process.env.REACT_APP_BASEURL + 'admin'
 
@@ -15,7 +15,8 @@ class Dashboard extends React.Component {
       <Switch>
         <Route path={baseUrl} exact component={Home} />
         <Route path={baseUrl + '/events'} exact component={Events} />
-        <Redirect from='*' to='/admin' />
+        <Route path={baseUrl + '/users'} exact component={UsersManagement} />
+        <Redirect from='*' to={baseUrl} />
       </Switch>
     )
 

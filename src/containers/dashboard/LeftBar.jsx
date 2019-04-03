@@ -41,7 +41,7 @@ class LeftBar extends React.Component {
     return (
       <Sider breakpoint='lg' collapsedWidth='0' width={250} theme='dark'>
         <Link to={'/'}>
-          <img src={logo} style={{ width: '100%' }} />
+          <img src={logo} style={{ width: '100%' }} alt='' />
         </Link>
 
         <Menu
@@ -62,6 +62,12 @@ class LeftBar extends React.Component {
             <Link to={'/admin/events'}>
               <Icon type='calendar' />
               <span>Événements</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='users'>
+            <Link to={'/admin/users'}>
+              <Icon type='team' />
+              <span>Gestion des utilisateurs</span>
             </Link>
           </Menu.Item>
           <Menu.Item key='logout' onClick={this.props.logout}>

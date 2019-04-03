@@ -27,9 +27,10 @@ export default (state = initialState, action) => {
       }
     case SET_ADMIN:
       users = state.users.slice().map(user => {
+        if (user.id !== action.payload) return user
         let { permissions } = user
         if (!permissions) permissions = []
-        if (user.id === action.payload) permissions.push('admin')
+        permissions.push('admin')
         return { ...user, permissions, admin: true }
       })
       return {
@@ -38,9 +39,9 @@ export default (state = initialState, action) => {
       }
     case REMOVE_ADMIN:
       users = state.users.slice().map(user => {
+        if (user.id !== action.payload) return user
         let { permissions } = user
-        if (user.id === action.payload)
-          permissions = permissions.filter(p => p !== 'admin')
+        permissions = permissions.filter(p => p !== 'admin')
         return { ...user, permissions, admin: false }
       })
       return {
@@ -97,6 +98,13 @@ export const setAdmin = id => {
         }
       )
       dispatch({ type: SET_ADMIN, payload: id })
+
+      dispatch(
+        notifActions.notifSend({
+          message: 'Cette personne est maintenant administrateur',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -123,6 +131,14 @@ export const removeAdmin = id => {
         }
       })
       dispatch({ type: REMOVE_ADMIN, payload: id })
+
+      dispatch(
+        notifActions.notifSend({
+          message: "Cette personne n'est plus administrateur",
+          kind: 'warning',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({

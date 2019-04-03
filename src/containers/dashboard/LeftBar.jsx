@@ -3,6 +3,7 @@ import { Layout, Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../modules/login'
+import logo from './assets/logo.png'
 const { Sider } = Layout
 
 class LeftBar extends React.Component {
@@ -38,9 +39,13 @@ class LeftBar extends React.Component {
   }
   render() {
     return (
-      <Sider breakpoint='lg' collapsedWidth='0' width={250} theme='light'>
+      <Sider breakpoint='lg' collapsedWidth='0' width={250} theme='dark'>
+        <Link to={'/'}>
+          <img src={logo} style={{ width: '100%' }} />
+        </Link>
+
         <Menu
-          theme='light'
+          theme='dark'
           mode='inline'
           defaultSelectedKeys={[this.state.current]}
           defaultOpenKeys={this.state.openKeys}
@@ -51,6 +56,12 @@ class LeftBar extends React.Component {
             <Link to={'/admin'}>
               <Icon type='appstore' />
               <span>Accueil</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='events'>
+            <Link to={'/admin/events'}>
+              <Icon type='calendar' />
+              <span>Événements</span>
             </Link>
           </Menu.Item>
           <Menu.Item key='logout' onClick={this.props.logout}>

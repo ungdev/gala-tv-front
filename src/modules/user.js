@@ -31,7 +31,6 @@ export const fetchUser = () => {
       const res = await axios.get('user', {
         headers: { Authorization: `Basic ${authToken}`, 'X-Date': moment().format() }
       })
-      console.log(res)
       dispatch({ type: SET_USER, payload: res.data })
     } catch (err) {
       dispatch(logout())

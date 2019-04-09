@@ -6,17 +6,20 @@ import {
   Drawer,
   Form,
   Button,
+  Icon,
   Input,
   Select,
   DatePicker,
   TimePicker,
   Checkbox,
-  Spin
+  Spin,
+  Tooltip
 } from 'antd'
 import { createEvent, deleteEvent, editEvent } from '../../../../modules/event'
 import { fetchArtists } from '../../../../modules/artist'
 import './components.css'
 import Uploader from '../../../../components/Uploader'
+import ArtistDrawer from './ArtistDrawer'
 const { Option } = Select
 
 class EventDrawer extends React.Component {
@@ -26,7 +29,8 @@ class EventDrawer extends React.Component {
     this.state = {
       eventVisible: event ? event.visible : true,
       image: event ? event.image : null,
-      event
+      event,
+      artistDrawerVisible: false
     }
     props.fetchArtists()
   }
@@ -86,6 +90,11 @@ class EventDrawer extends React.Component {
         onClose={this.props.onClose}
         visible={this.props.visible}
       >
+        <ArtistDrawer
+          visible={this.state.artistDrawerVisible}
+          buttonClickedTime={this.state.buttonArtistClickedTime}
+          onClose={() => this.setState({ artistDrawerVisible: false })}
+        />
         <Form layout='vertical' onSubmit={this.handleSubmit} hideRequiredMark>
           <Form.Item label='Nom' style={{ marginBottom: 0 }}>
             {getFieldDecorator('name', {
@@ -175,7 +184,26 @@ class EventDrawer extends React.Component {
             </Form.Item>
           </Form.Item>
           {artists && (
-            <Form.Item label='Artiste'>
+            <Form.Item
+              label={
+                <span>
+                  Artiste{' '}
+                  <Tooltip placement='top' title='Ajouter un artiste'>
+                    <a
+                      onClick={() =>
+                        this.setState({
+                          artistDrawerVisible: true,
+                          buttonArtistClickedTime: moment()
+                        })
+                      }
+                      style={{ fontSize: '14px' }}
+                    >
+                      <Icon type='plus-circle' />
+                    </a>
+                  </Tooltip>
+                </span>
+              }
+            >
               {getFieldDecorator('artist', {
                 initialValue: event ? event.artistId : null
               })(

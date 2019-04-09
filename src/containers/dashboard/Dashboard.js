@@ -5,6 +5,7 @@ import { Spin } from 'antd'
 import Layout from './layout'
 import Home from './pages/Home'
 import Events from './pages/Events'
+import Artists from './pages/Artists'
 import UsersManagement from './pages/UserManagement'
 import ValidateUser from './pages/ValidateUser'
 
@@ -22,6 +23,7 @@ class Dashboard extends React.Component {
         {admin && (
           <React.Fragment>
             <Route path={baseUrl + '/events'} exact component={Events} />
+            <Route path={baseUrl + '/artists'} exact component={Artists} />
             <Route
               path={baseUrl + '/users'}
               exact

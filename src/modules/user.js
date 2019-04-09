@@ -17,7 +17,9 @@ export default (state = initialState, action) => {
         ...state,
         user: {
           ...action.payload,
-          admin: action.payload.permissions.findIndex(p => p === 'admin') !== -1
+          admin: action.payload
+            ? action.payload.permissions.findIndex(p => p === 'admin') !== -1
+            : false
         }
       }
 
@@ -46,7 +48,7 @@ export const fetchUser = () => {
   }
 }
 
-export const request = (id) => {
+export const request = id => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {

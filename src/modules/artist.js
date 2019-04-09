@@ -5,6 +5,7 @@ import errorToString from '../lib/errorToString'
 
 export const SET_ARTISTS = 'artist/SET_ARTISTS'
 export const ADD_ARTIST = 'artist/ADD_ARTIST'
+export const EDIT_ARTIST = 'artist/EDIT_ARTIST'
 export const REMOVE_ARTIST = 'artist/REMOVE_ARTIST'
 
 const initialState = {
@@ -22,6 +23,14 @@ export default (state = initialState, action) => {
     case ADD_ARTIST:
       artists = state.artists.slice()
       artists.push(action.payload)
+      return {
+        ...state,
+        artists
+      }
+    case EDIT_ARTIST:
+      artists = state.artists
+        .slice()
+        .map(artist => (artist.id === action.payload.id ? action.payload : artist))
       return {
         ...state,
         artists
@@ -52,6 +61,32 @@ export const fetchArtists = () => {
         }
       })
       dispatch({ type: SET_ARTISTS, payload: res.data })
+    } catch (err) {
+      dispatch(
+        notifActions.notifSend({
+          message: errorToString(err.response.data.error),
+          kind: 'danger',
+          dismissAfter: 2000
+        })
+      )
+    }
+  }
+}
+
+export const editArtist = (id, params) => {
+  return async (dispatch, getState) => {
+    const authToken = getState().login.token
+    if (!authToken || authToken.length === 0) {
+      return
+    }
+    try {
+      const res = await axios.put(`artists/${id}`, params, {
+        headers: {
+          Authorization: `Basic ${authToken}`,
+          'X-Date': moment().format()
+        }
+      })
+      dispatch({ type: EDIT_ARTIST, payload: res.data })
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -97,16 +132,12 @@ export const deleteArtist = id => {
       return
     }
     try {
-      await axios.delete(
-        `artists/${id}`,
-        {}, // check if there's a body or not
-        {
-          headers: {
-            Authorization: `Basic ${authToken}`,
-            'X-Date': moment().format()
-          }
+      await axios.delete(`artists/${id}`, {
+        headers: {
+          Authorization: `Basic ${authToken}`,
+          'X-Date': moment().format()
         }
-      )
+      })
       dispatch({ type: REMOVE_ARTIST, payload: id })
     } catch (err) {
       dispatch(

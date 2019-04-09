@@ -19,26 +19,37 @@ class Uploader extends React.Component {
       previewVisible: false,
       previewImage: '',
       fileList,
-      initialImage: props.initialImage
+      initialImage: props.initialImage || 'none',
+      buttonClickedTime: props.buttonClickedTime
     }
   }
 
   static getDerivedStateFromProps(props, state) {
     let fileList = []
-    if (
-      props.initialImage &&
-      (state.fileList.length === 0 || state.initialImage !== props.initialImage)
-    ) {
+    if (props.initialImage && props.initialImage !== state.initialImage) {
       fileList.push({
         uid: '-1',
         name: props.initialImage.split('/images/')[1],
         status: 'done',
         url: `${process.env.REACT_APP_API}${props.initialImage}`
       })
-      return { fileList }
+      return {
+        initialImage: props.initialImage,
+        fileList,
+        buttonClickedTime: props.buttonClickedTime
+      }
     }
-    if (!props.initialImage && state.initialImage) {
-      return { initialImage: null, fileList }
+    if (
+      props.buttonClickedTime &&
+      state.buttonClickedTime &&
+      props.buttonClickedTime.format('x') !==
+        state.buttonClickedTime.format('x')
+    ) {
+      return {
+        buttonClickedTime: props.buttonClickedTime,
+        fileList,
+        initialImage: 'none'
+      }
     }
     return null
   }
@@ -55,6 +66,8 @@ class Uploader extends React.Component {
     if (e.file.status === 'removed') {
       this.props.removeImage()
       this.props.deleteImage(e.file.name)
+      this.setState({ fileList: [], removing: true })
+      return
     }
     if (e.file.status === 'uploading') {
       this.props.addImage(e.file.name)

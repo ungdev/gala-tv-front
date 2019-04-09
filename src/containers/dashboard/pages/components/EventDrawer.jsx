@@ -33,12 +33,12 @@ class EventDrawer extends React.Component {
   addImage = image => this.setState({ image })
 
   handleSubmit = e => {
-    if (!this.state.image) {
-      this.props.sendError()
-      return
-    }
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
+      if (!this.state.image) {
+        this.props.sendError()
+        return
+      }
       if (!err) {
         let event = {
           name: values.name,
@@ -176,7 +176,9 @@ class EventDrawer extends React.Component {
           </Form.Item>
           {artists && (
             <Form.Item label='Artiste'>
-              {getFieldDecorator('artist')(
+              {getFieldDecorator('artist', {
+                initialValue: event ? event.artistId : null
+              })(
                 <Select
                   showSearch
                   notFoundContent='Aucun artiste'
@@ -229,6 +231,7 @@ class EventDrawer extends React.Component {
               addImage={this.addImage}
               removeImage={() => this.setState({ image: null })}
               initialImage={event && event.image}
+              buttonClickedTime={this.props.buttonClickedTime}
             />
           </div>
           <Form.Item>

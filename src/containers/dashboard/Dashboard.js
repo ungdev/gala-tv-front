@@ -6,6 +6,7 @@ import Layout from './layout'
 import Home from './pages/Home'
 import Events from './pages/Events'
 import Artists from './pages/Artists'
+import Partners from './pages/Partners'
 import UsersManagement from './pages/UserManagement'
 import ValidateUser from './pages/ValidateUser'
 
@@ -24,6 +25,7 @@ class Dashboard extends React.Component {
           <React.Fragment>
             <Route path={baseUrl + '/events'} exact component={Events} />
             <Route path={baseUrl + '/artists'} exact component={Artists} />
+            <Route path={baseUrl + '/partners'} exact component={Partners} />
             <Route
               path={baseUrl + '/users'}
               exact

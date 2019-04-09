@@ -6,6 +6,7 @@ import artist from './artist'
 import event from './event'
 import image from './image'
 import login from './login'
+import partner from './partner'
 import user from './user'
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   event,
   image,
   login,
+  partner,
   user
 })

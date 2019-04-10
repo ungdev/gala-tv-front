@@ -104,8 +104,8 @@ class Partners extends React.Component {
               {item.description} <br />
               <br />
               {item.visible
-                ? 'Cet partnere est affiché sur les écrans'
-                : "Cet partnere n'est pas affiché sur les écrans"}
+                ? 'Ce partenaire est affiché sur les écrans'
+                : "Ce partenaire n'est pas affiché sur les écrans"}
             </List.Item>
           )}
         />

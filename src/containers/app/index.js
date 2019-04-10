@@ -5,7 +5,7 @@ import { Notifs as Notifications } from 'redux-notifications'
 import 'antd/dist/antd.css'
 
 import { autoLogin } from '../../modules/login'
-import Home from '../home'
+import Home from '../home/Home'
 import asyncComponent from '../../components/async'
 import Return from '../login/Return'
 import Login from '../login/Login'

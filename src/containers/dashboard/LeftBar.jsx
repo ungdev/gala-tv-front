@@ -81,7 +81,7 @@ class LeftBar extends React.Component {
           {admin && (
             <Menu.Item key='partners'>
               <Link to={'/admin/partners'}>
-                <Icon type='user' />
+                <Icon type='crown' />
                 <span>Partenaires</span>
               </Link>
             </Menu.Item>

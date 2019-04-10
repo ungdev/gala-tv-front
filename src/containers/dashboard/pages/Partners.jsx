@@ -1,6 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchPartners, deletePartner, editPartner } from '../../../modules/partner'
+import {
+  fetchPartners,
+  deletePartner,
+  editPartner
+} from '../../../modules/partner'
 import PartnerDrawer from './components/PartnerDrawer'
 import { Button, List, Icon, Spin } from 'antd'
 import moment from 'moment'
@@ -99,13 +103,13 @@ class Partners extends React.Component {
             >
               <List.Item.Meta
                 title={item.name}
-                description={<a>{item.url}</a>}
+                description={<a href={item.url}>{item.url}</a>}
               />
               {item.description} <br />
               <br />
               {item.visible
-                ? 'Cet partnere est affiché sur les écrans'
-                : "Cet partnere n'est pas affiché sur les écrans"}
+                ? 'Cet partenaire est affiché sur les écrans'
+                : "Cet partenaire n'est pas affiché sur les écrans"}
             </List.Item>
           )}
         />

@@ -44,18 +44,12 @@ class Events extends React.Component {
   render() {
     let { events, artists } = this.props
     if (!events || !artists) return <Spin />
-    events = events
-      .map(event => {
-        return {
-          ...event,
-          fulldate: this.getDate(event.start, event.end)
-        }
-      })
-      .sort((a, b) => {
-        if (moment(a.start).isBefore(b.start)) return -1
-        if (moment(a.start).isAfter(b.start)) return 1
-        return 0
-      })
+    events = events.map(event => {
+      return {
+        ...event,
+        fulldate: this.getDate(event.start, event.end)
+      }
+    })
     return (
       <React.Fragment>
         <Button

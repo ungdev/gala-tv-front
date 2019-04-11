@@ -9,7 +9,7 @@ export const EDIT_PARTNER = 'partner/EDIT_PARTNER'
 export const REMOVE_PARTNER = 'partner/REMOVE_PARTNER'
 
 const initialState = {
-  partners: null
+  partners: []
 }
 
 export default (state = initialState, action) => {

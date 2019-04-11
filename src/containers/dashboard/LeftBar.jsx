@@ -3,7 +3,7 @@ import { Layout, Menu, Icon, Spin } from 'antd'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../modules/login'
-import logo from './assets/logo.png'
+import logo from '../../assets/logo.png'
 const { Sider } = Layout
 
 class LeftBar extends React.Component {

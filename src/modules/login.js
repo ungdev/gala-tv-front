@@ -55,6 +55,5 @@ export const logout = () => {
 
     localStorage.removeItem('tv-token')
 
-    return dispatch(push('/admin'))
   }
 }

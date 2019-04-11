@@ -1,0 +1,11 @@
+.messages{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.messages-scroll{
+  font-family: 'LemonMilk';
+  font-size: 45px;
+}

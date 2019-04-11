@@ -3,7 +3,7 @@ import { Layout, Menu, Icon, Spin } from 'antd'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../../modules/login'
-import logo from './assets/logo.png'
+import logo from '../../assets/logo.png'
 const { Sider } = Layout
 
 class LeftBar extends React.Component {
@@ -83,6 +83,14 @@ class LeftBar extends React.Component {
               <Link to={'/admin/partners'}>
                 <Icon type='crown' />
                 <span>Partenaires</span>
+              </Link>
+            </Menu.Item>
+          )}
+          {admin && (
+            <Menu.Item key='messages'>
+              <Link to={'/admin/messages'}>
+                <Icon type='message' />
+                <span>Messages</span>
               </Link>
             </Menu.Item>
           )}

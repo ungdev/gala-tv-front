@@ -3,64 +3,64 @@ import { actions as notifActions } from 'redux-notifications'
 import moment from 'moment'
 import errorToString from '../lib/errorToString'
 
-export const SET_PARTNERS = 'partner/SET_PARTNERS'
-export const ADD_PARTNER = 'partner/ADD_PARTNER'
-export const EDIT_PARTNER = 'partner/EDIT_PARTNER'
-export const REMOVE_PARTNER = 'partner/REMOVE_PARTNER'
+export const SET_MESSAGES = 'message/SET_MESSAGES'
+export const ADD_MESSAGE = 'message/ADD_MESSAGE'
+export const EDIT_MESSAGE = 'message/EDIT_MESSAGE'
+export const REMOVE_MESSAGE = 'message/REMOVE_MESSAGE'
 
 const initialState = {
-  partners: []
+  messages: []
 }
 
 export default (state = initialState, action) => {
-  let partners = null
+  let messages = null
   switch (action.type) {
-    case SET_PARTNERS:
+    case SET_MESSAGES:
       return {
         ...state,
-        partners: action.payload
+        messages: action.payload
       }
-    case ADD_PARTNER:
-      partners = state.partners.slice()
-      partners.push(action.payload)
+    case ADD_MESSAGE:
+      messages = state.messages.slice()
+      messages.push(action.payload)
       return {
         ...state,
-        partners
+        messages
       }
-    case EDIT_PARTNER:
-      partners = state.partners
+    case EDIT_MESSAGE:
+      messages = state.messages
         .slice()
-        .map(partner => (partner.id === action.payload.id ? action.payload : partner))
+        .map(message => (message.id === action.payload.id ? action.payload : message))
       return {
         ...state,
-        partners
+        messages
       }
-    case REMOVE_PARTNER:
-      partners = state.partners.slice()
-      partners = partners.filter(partner => partner.id !== action.payload)
+    case REMOVE_MESSAGE:
+      messages = state.messages.slice()
+      messages = messages.filter(message => message.id !== action.payload)
       return {
         ...state,
-        partners
+        messages
       }
     default:
       return state
   }
 }
 
-export const fetchPartners = () => {
+export const editMessage = (id, params) => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      const res = await axios.get('partners/all', {
+      const res = await axios.put(`messages/${id}`, params, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()
         }
       })
-      dispatch({ type: SET_PARTNERS, payload: res.data })
+      dispatch({ type: EDIT_MESSAGE, payload: res.data })
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -73,20 +73,20 @@ export const fetchPartners = () => {
   }
 }
 
-export const editPartner = (id, params) => {
+export const createMessage = params => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      const res = await axios.put(`partners/${id}`, params, {
+      const res = await axios.post('messages', params, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()
         }
       })
-      dispatch({ type: EDIT_PARTNER, payload: res.data })
+      dispatch({ type: ADD_MESSAGE, payload: res.data })
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -99,46 +99,20 @@ export const editPartner = (id, params) => {
   }
 }
 
-export const createPartner = params => {
+export const deleteMessage = id => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      const res = await axios.post('partners', params, {
+      await axios.delete(`messages/${id}`, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()
         }
       })
-      dispatch({ type: ADD_PARTNER, payload: res.data })
-    } catch (err) {
-      dispatch(
-        notifActions.notifSend({
-          message: errorToString(err.response.data.error),
-          kind: 'danger',
-          dismissAfter: 2000
-        })
-      )
-    }
-  }
-}
-
-export const deletePartner = id => {
-  return async (dispatch, getState) => {
-    const authToken = getState().login.token
-    if (!authToken || authToken.length === 0) {
-      return
-    }
-    try {
-      await axios.delete(`partners/${id}`, {
-        headers: {
-          Authorization: `Basic ${authToken}`,
-          'X-Date': moment().format()
-        }
-      })
-      dispatch({ type: REMOVE_PARTNER, payload: id })
+      dispatch({ type: REMOVE_MESSAGE, payload: id })
     } catch (err) {
       dispatch(
         notifActions.notifSend({

@@ -5,15 +5,18 @@ import { Notifs as Notifications } from 'redux-notifications'
 import 'antd/dist/antd.css'
 
 import { autoLogin } from '../../modules/login'
-import Home from '../home/Home'
+import { startSocketIO } from '../../modules/socketio'
 import asyncComponent from '../../components/async'
+import Home from '../home/Home'
 import Return from '../login/Return'
 import Login from '../login/Login'
+
 const Dashboard = asyncComponent(() => import('../dashboard/Dashboard'))
 class App extends React.Component {
   constructor(props) {
     super(props)
     props.autoLogin()
+    props.startSocketIO()
   }
   render() {
     return (
@@ -48,7 +51,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  autoLogin: () => dispatch(autoLogin())
+  autoLogin: () => dispatch(autoLogin()),
+  startSocketIO: () => dispatch(startSocketIO())
 })
 
 export default connect(

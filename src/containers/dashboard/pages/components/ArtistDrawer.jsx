@@ -4,7 +4,7 @@ import { actions as notifActions } from 'redux-notifications'
 import { Drawer, Form, Button, Input, Checkbox } from 'antd'
 import { createArtist, editArtist } from '../../../../modules/artist'
 import { fetchArtists } from '../../../../modules/artist'
-import './components.css'
+import '../styles/components.css'
 import Uploader from '../../../../components/Uploader'
 
 class ArtistDrawer extends React.Component {

@@ -30,7 +30,9 @@ export default (state = initialState, action) => {
     case EDIT_MESSAGE:
       messages = state.messages
         .slice()
-        .map(message => (message.id === action.payload.id ? action.payload : message))
+        .map(message =>
+          message.id === action.payload.id ? action.payload : message
+        )
       return {
         ...state,
         messages
@@ -73,19 +75,23 @@ export const editMessage = (id, params) => {
   }
 }
 
-export const createMessage = params => {
+export const createMessage = content => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      const res = await axios.post('messages', params, {
-        headers: {
-          Authorization: `Basic ${authToken}`,
-          'X-Date': moment().format()
+      const res = await axios.post(
+        'messages',
+        { content },
+        {
+          headers: {
+            Authorization: `Basic ${authToken}`,
+            'X-Date': moment().format()
+          }
         }
-      })
+      )
       dispatch({ type: ADD_MESSAGE, payload: res.data })
     } catch (err) {
       dispatch(

@@ -4,7 +4,7 @@ import { actions as notifActions } from 'redux-notifications'
 import { Drawer, Form, Button, Input, Checkbox } from 'antd'
 import { createPartner, editPartner } from '../../../../modules/partner'
 import { fetchPartners } from '../../../../modules/partner'
-import './components.css'
+import '../styles/components.css'
 import Uploader from '../../../../components/Uploader'
 
 class PartnerDrawer extends React.Component {

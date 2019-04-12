@@ -17,7 +17,7 @@ import {
 } from 'antd'
 import { createEvent, deleteEvent, editEvent } from '../../../../modules/event'
 import { fetchArtists } from '../../../../modules/artist'
-import './components.css'
+import '../styles/components.css'
 import Uploader from '../../../../components/Uploader'
 import ArtistDrawer from './ArtistDrawer'
 const { Option } = Select

@@ -9,6 +9,7 @@ import login from './login'
 import message from './message'
 import partner from './partner'
 import socketio from './socketio'
+import tweet from './tweet'
 import user from './user'
 
 export default combineReducers({
@@ -22,5 +23,6 @@ export default combineReducers({
   message,
   partner,
   socketio,
+  tweet,
   user
 })

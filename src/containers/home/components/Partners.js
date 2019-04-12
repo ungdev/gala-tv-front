@@ -27,17 +27,13 @@ class Partners extends React.Component {
 
   render() {
     if (!this.props.partners || this.props.partners.length === 0) return <div />
+    const current = this.props.partners[this.state.current]
+    if (!current) return <div />
     return (
       <div className='partners'>
         <div className='partners-container'>
           <div className='partners-image'>
-            <img
-              src={
-                process.env.REACT_APP_API +
-                this.props.partners[this.state.current].image
-              }
-              alt=''
-            />
+            <img src={process.env.REACT_APP_API + current.image} alt='' />
           </div>
         </div>
       </div>

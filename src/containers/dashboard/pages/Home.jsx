@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import './styles/home.css'
 import { Button } from 'antd'
 import { request } from '../../../modules/user'
+import AdminHome from './AdminHome'
 
 class Home extends React.Component {
   render() {
     const { admin } = this.props.user
-    if (admin) return <div>ADMIN HOME</div>
+    if (admin) return <AdminHome/>
     return (
       <div className='home-container'>
         <h1>Vous n'êtes pas administrateur</h1>

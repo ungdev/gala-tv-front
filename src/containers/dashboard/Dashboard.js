@@ -10,7 +10,6 @@ import Messages from './pages/Messages'
 import Partners from './pages/Partners'
 import UsersManagement from './pages/UserManagement'
 import ValidateUser from './pages/ValidateUser'
-import { startSocketIO } from '../../modules/socketio'
 
 const baseUrl = process.env.REACT_APP_BASEURL + 'admin'
 

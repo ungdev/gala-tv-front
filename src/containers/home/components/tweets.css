@@ -1,0 +1,19 @@
+.tweets{
+  height: 80%;
+  width: 80%;
+}
+
+.tweet{
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+.tweet-from {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.tweet-text {
+  margin-bottom: 23px;
+}

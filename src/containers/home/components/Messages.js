@@ -6,8 +6,7 @@ class Messages extends React.Component {
   render() {
     const messages = this.props.messages
       .filter(m => m.visible)
-      .map(m => m.content)
-      .map(m => <span style={{ margin: '0 100px' }}>{m}</span>)
+      .map(m => <span style={{ margin: '0 100px' }}>{m.content}</span>)
     return (
       <div className='messages'>
         <marquee className='messages-scroll' scrollamount='20'>

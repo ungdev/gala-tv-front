@@ -79,6 +79,7 @@ export const editEvent = (id, params) => {
     if (!authToken || authToken.length === 0) {
       return
     }
+    if(!params.artist) params.artist = ''
     try {
       const res = await axios.put(`events/${id}`, params, {
         headers: {
@@ -105,6 +106,7 @@ export const createEvent = params => {
     if (!authToken || authToken.length === 0) {
       return
     }
+    if(!params.artist) params.artist = ''
     try {
       const res = await axios.post('events', params, {
         headers: {

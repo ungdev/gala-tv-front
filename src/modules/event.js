@@ -80,6 +80,7 @@ export const editEvent = (id, params) => {
       return
     }
     if(!params.artist) params.artist = ''
+    if(!params.partner) params.partner = ''
     try {
       const res = await axios.put(`events/${id}`, params, {
         headers: {
@@ -107,6 +108,7 @@ export const createEvent = params => {
       return
     }
     if(!params.artist) params.artist = ''
+    if(!params.partner) params.partner = ''
     try {
       const res = await axios.post('events', params, {
         headers: {

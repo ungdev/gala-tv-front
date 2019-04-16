@@ -17,9 +17,11 @@ import {
 } from 'antd'
 import { createEvent, deleteEvent, editEvent } from '../../../../modules/event'
 import { fetchArtists } from '../../../../modules/artist'
+import { fetchPartners } from '../../../../modules/partner'
 import '../styles/components.css'
 import Uploader from '../../../../components/Uploader'
 import ArtistDrawer from './ArtistDrawer'
+import PartnerDrawer from './PartnerDrawer'
 const { Option } = Select
 
 class EventDrawer extends React.Component {
@@ -30,9 +32,11 @@ class EventDrawer extends React.Component {
       eventVisible: event ? event.visible : true,
       image: event ? event.image : null,
       event,
-      artistDrawerVisible: false
+      artistDrawerVisible: false,
+      partnerDrawerVisible: false
     }
     props.fetchArtists()
+    props.fetchPartners()
   }
   addImage = image => this.setState({ image })
 
@@ -49,6 +53,7 @@ class EventDrawer extends React.Component {
           description: values.description,
           place: values.place,
           artist: values.artist,
+          partner: values.partner,
           visible: this.state.eventVisible,
           image: this.state.image,
           start:
@@ -81,7 +86,7 @@ class EventDrawer extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
-    const { user, event, artists } = this.props
+    const { user, event, artists, partners } = this.props
     if (!user) return <Spin />
     return (
       <Drawer
@@ -94,6 +99,11 @@ class EventDrawer extends React.Component {
           visible={this.state.artistDrawerVisible}
           buttonClickedTime={this.state.buttonArtistClickedTime}
           onClose={() => this.setState({ artistDrawerVisible: false })}
+        />
+        <PartnerDrawer
+          visible={this.state.partnerDrawerVisible}
+          buttonClickedTime={this.state.buttonPartnerClickedTime}
+          onClose={() => this.setState({ partnerDrawerVisible: false })}
         />
         <Form layout='vertical' onSubmit={this.handleSubmit} hideRequiredMark>
           <Form.Item label='Nom' style={{ marginBottom: 0 }}>
@@ -232,6 +242,55 @@ class EventDrawer extends React.Component {
               )}
             </Form.Item>
           )}
+          {partners && (
+            <Form.Item
+              label={
+                <span>
+                  Partenaire{' '}
+                  <Tooltip placement='top' title='Ajouter un partenaire'>
+                    <a
+                      onClick={() =>
+                        this.setState({
+                          partnerDrawerVisible: true,
+                          buttonPartnerClickedTime: moment()
+                        })
+                      }
+                      style={{ fontSize: '14px' }}
+                    >
+                      <Icon type='plus-circle' />
+                    </a>
+                  </Tooltip>
+                </span>
+              }
+            >
+              {getFieldDecorator('partner', {
+                initialValue: event ? event.partnerId : null
+              })(
+                <Select
+                  showSearch
+                  notFoundContent='Aucun partenaire'
+                  placeholder='Sélectionnez un Partenaire'
+                  optionFilterProp='children'
+                  filterOption={(input, option) => {
+                    const partner = partners.find(
+                      p => p.id === option.props.value
+                    )
+                    if (!partner) return false
+                    return (
+                      partner.name.toLowerCase().indexOf(input.toLowerCase()) >=
+                      0
+                    )
+                  }}
+                >
+                  {partners.map(partner => (
+                    <Option key={partner.id} value={partner.id}>
+                      {partner.name}
+                    </Option>
+                  ))}
+                </Select>
+              )}
+            </Form.Item>
+          )}
           <Form.Item label='Description'>
             {getFieldDecorator('description', {
               initialValue: event ? event.description : ''
@@ -275,11 +334,13 @@ class EventDrawer extends React.Component {
 
 const mapStateToProps = state => ({
   artists: state.artist.artists,
+  partners: state.partner.partners,
   user: state.user.user
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchArtists: () => dispatch(fetchArtists()),
+  fetchPartners: () => dispatch(fetchPartners()),
   createEvent: params => dispatch(createEvent(params)),
   editEvent: (id, params) => dispatch(editEvent(id, params)),
   deleteEvent: id => dispatch(deleteEvent(id)),

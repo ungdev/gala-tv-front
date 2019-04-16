@@ -19,7 +19,7 @@ export const editTweet = (id, params) => {
       return
     }
     try {
-      const res = await axios.put(`tweets/${id}`, params, {
+      await axios.put(`tweets/${id}`, params, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()

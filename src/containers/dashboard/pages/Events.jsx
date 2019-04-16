@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEvents, deleteEvent, editEvent } from '../../../modules/event'
 import { fetchArtists } from '../../../modules/artist'
+import { fetchPartners } from '../../../modules/partner'
 import EventDrawer from './components/EventDrawer'
 import { Button, List, Icon, Spin } from 'antd'
 import moment from 'moment'
@@ -11,6 +12,7 @@ class Events extends React.Component {
     super(props)
     props.fetchEvents()
     props.fetchArtists()
+    props.fetchPartners()
     this.state = {
       event: null,
       visible: false
@@ -37,13 +39,19 @@ class Events extends React.Component {
     let artist =
       event.artistId &&
       this.props.artists.find(artist => artist.id === event.artistId)
-    if (artist) return `${event.name} - ${event.place} - ${artist.name}`
-    else return `${event.name} - ${event.place}`
+    let partner =
+      event.partnerId &&
+      this.props.partners.find(partner => partner.id === event.partnerId)
+    let title = `${event.name} - ${event.place}`
+    if (artist) title = title + ` - ${artist.name}`
+    if (partner) title = title + ` - ${partner.name}`
+    
+    return title
   }
 
   render() {
-    let { events, artists } = this.props
-    if (!events || !artists) return <Spin />
+    let { events, artists, partners } = this.props
+    if (!events || !artists || !partners) return <Spin />
     events = events.map(event => {
       return {
         ...event,
@@ -88,6 +96,7 @@ class Events extends React.Component {
                         description: item.description,
                         place: item.place,
                         artist: item.artist,
+                        partner: item.partner,
                         visible: !item.visible,
                         image: item.image,
                         start: item.start,
@@ -144,12 +153,14 @@ class Events extends React.Component {
 
 const mapStateToProps = state => ({
   events: state.event.events,
-  artists: state.artist.artists
+  artists: state.artist.artists,
+  partners: state.partner.partners
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents()),
   fetchArtists: () => dispatch(fetchArtists()),
+  fetchPartners: () => dispatch(fetchPartners()),
   deleteEvent: id => dispatch(deleteEvent(id)),
   editEvent: (id, params) => dispatch(editEvent(id, params))
 })

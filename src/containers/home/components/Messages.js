@@ -1,17 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './messages.css'
+import Marquee from '../../../components/Marquee'
 
 class Messages extends React.Component {
   render() {
     const messages = this.props.messages
       .filter(m => m.visible)
-      .map(m => <span style={{ margin: '0 100px' }}>{m.content}</span>)
+      .map((m, i) => <span key={i} style={{ margin: '0 100px' }}>{m.content}</span>)
     return (
       <div className='messages'>
-        <marquee className='messages-scroll' scrollamount='20'>
+        <Marquee className='messages-scroll' fill speed={10}>
           {messages}
-        </marquee>
+        </Marquee>
       </div>
     )
   }

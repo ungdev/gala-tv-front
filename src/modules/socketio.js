@@ -43,7 +43,6 @@ export const startSocketIO = () => {
         dispatch({ type: SET_MESSAGES, payload: messages })
       })
       socket.on('tweets', tweets => {
-        console.log(tweets)
         dispatch({ type: SET_TWEETS, payload: tweets })
       })
     } catch (err) {

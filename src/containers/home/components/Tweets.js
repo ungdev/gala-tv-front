@@ -9,7 +9,7 @@ class Tweets extends React.Component {
     return (
       <div className='tweets'>
         {tweets.map(tweet => (
-          <div className='tweet'>
+          <div className='tweet' key={tweet.id}>
             <span className='tweet-from'>
               De @{tweet.user} à {moment(tweet.createdAt).format('HH:mm')} :
             </span>

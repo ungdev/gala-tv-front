@@ -12,14 +12,14 @@ export default (state = initialState, action) => {
   }
 }
 
-export const editMessage = (id, params) => {
+export const editCensored = (id, params) => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      await axios.put(`messages/${id}`, params, {
+      await axios.put(`censoreds/${id}`, params, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()
@@ -28,7 +28,7 @@ export const editMessage = (id, params) => {
     } catch (err) {
       dispatch(
         notifActions.notifSend({
-          message: errorToString(err.response.data.error),
+          censored: errorToString(err.response.data.error),
           kind: 'danger',
           dismissAfter: 2000
         })
@@ -37,43 +37,14 @@ export const editMessage = (id, params) => {
   }
 }
 
-export const createMessage = content => {
+export const createCensored = params => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
       return
     }
     try {
-      await axios.post(
-        'messages',
-        { content },
-        {
-          headers: {
-            Authorization: `Basic ${authToken}`,
-            'X-Date': moment().format()
-          }
-        }
-      )
-    } catch (err) {
-      dispatch(
-        notifActions.notifSend({
-          message: errorToString(err.response.data.error),
-          kind: 'danger',
-          dismissAfter: 2000
-        })
-      )
-    }
-  }
-}
-
-export const deleteMessage = id => {
-  return async (dispatch, getState) => {
-    const authToken = getState().login.token
-    if (!authToken || authToken.length === 0) {
-      return
-    }
-    try {
-      await axios.delete(`messages/${id}`, {
+      await axios.post('censoreds', params, {
         headers: {
           Authorization: `Basic ${authToken}`,
           'X-Date': moment().format()
@@ -82,7 +53,32 @@ export const deleteMessage = id => {
     } catch (err) {
       dispatch(
         notifActions.notifSend({
-          message: errorToString(err.response.data.error),
+          censored: errorToString(err.response.data.error),
+          kind: 'danger',
+          dismissAfter: 2000
+        })
+      )
+    }
+  }
+}
+
+export const deleteCensored = id => {
+  return async (dispatch, getState) => {
+    const authToken = getState().login.token
+    if (!authToken || authToken.length === 0) {
+      return
+    }
+    try {
+      await axios.delete(`censoreds/${id}`, {
+        headers: {
+          Authorization: `Basic ${authToken}`,
+          'X-Date': moment().format()
+        }
+      })
+    } catch (err) {
+      dispatch(
+        notifActions.notifSend({
+          censored: errorToString(err.response.data.error),
           kind: 'danger',
           dismissAfter: 2000
         })

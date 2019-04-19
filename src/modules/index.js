@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import { reducer as notificationsReducer } from 'redux-notifications'
 import admin from './admin'
 import artist from './artist'
+import censored from './censored'
 import event from './event'
 import image from './image'
 import login from './login'
@@ -17,6 +18,7 @@ export default combineReducers({
   notifs: notificationsReducer,
   admin,
   artist,
+  censored,
   event,
   image,
   login,

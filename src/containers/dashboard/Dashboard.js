@@ -6,6 +6,7 @@ import Layout from './layout'
 import Home from './pages/Home'
 import Events from './pages/Events'
 import Artists from './pages/Artists'
+import Censoreds from './pages/Censoreds'
 import Messages from './pages/Messages'
 import Partners from './pages/Partners'
 import UsersManagement from './pages/UserManagement'
@@ -28,6 +29,7 @@ class Dashboard extends React.Component {
             <Route path={baseUrl + '/artists'} exact component={Artists} />
             <Route path={baseUrl + '/partners'} exact component={Partners} />
             <Route path={baseUrl + '/messages'} exact component={Messages} />
+            <Route path={baseUrl + '/censoreds'} exact component={Censoreds} />
             <Route
               path={baseUrl + '/users'}
               exact

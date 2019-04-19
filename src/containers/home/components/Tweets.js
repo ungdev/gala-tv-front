@@ -4,8 +4,26 @@ import './tweets.css'
 import moment from 'moment'
 
 class Tweets extends React.Component {
+  replace = text => {
+    this.props.censoreds.forEach(censored => {
+      text = text.replace(censored.word, 'fraise')
+    })
+    return text
+  }
   render() {
-    const tweets = this.props.tweets.filter(m => m.visible)
+    const { censoreds } = this.props
+    const tweets = this.props.tweets
+      .filter(m => m.visible)
+      .filter(
+        t =>
+          censoreds
+            .filter(censored => censored.level > 0)
+            .findIndex(
+              censored =>
+                t.text.toLowerCase().search(censored.word.toLowerCase()) !== -1
+            ) === -1
+      )
+
     return (
       <div className='tweets'>
         {tweets.map(tweet => (
@@ -15,8 +33,8 @@ class Tweets extends React.Component {
             </span>
             <span className='tweet-text'>
               {tweet.text.length > 100
-                ? tweet.text.substr(0, 100) + '...'
-                : tweet.text}
+                ? this.replace(tweet.text).substr(0, 100) + '...'
+                : this.replace(tweet.text)}
             </span>
           </div>
         ))}
@@ -26,7 +44,8 @@ class Tweets extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tweets: state.socketio.tweets
+  tweets: state.socketio.tweets,
+  censoreds: state.socketio.censoreds
 })
 
 export default connect(

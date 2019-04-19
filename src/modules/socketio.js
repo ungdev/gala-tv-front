@@ -1,10 +1,12 @@
 import io from 'socket.io-client'
 
+export const SET_CENSOREDS = 'socketio/SET_CENSOREDS'
 export const SET_PARTNERS = 'socketio/SET_PARTNERS'
 export const SET_MESSAGES = 'socketio/SET_MESSAGES'
 export const SET_TWEETS = 'socketio/SET_TWEETS'
 
 const initialState = {
+  censoreds: [],
   partners: null,
   messages: [],
   tweets: []
@@ -22,6 +24,11 @@ export default (state = initialState, action) => {
         ...state,
         messages: action.payload
       }
+    case SET_CENSOREDS:
+      return {
+        ...state,
+        censoreds: action.payload
+      }
     case SET_TWEETS:
       return {
         ...state,
@@ -33,9 +40,13 @@ export default (state = initialState, action) => {
 }
 
 export const startSocketIO = () => {
-  return async (dispatch, getState) => {
+  return async dispatch => {
     try {
       let socket = io.connect(process.env.REACT_APP_API_SOCKETIO)
+      socket.on('censoreds', censoreds => {
+        console.log(censoreds)
+        dispatch({ type: SET_CENSOREDS, payload: censoreds })
+      })
       socket.on('partners', partners => {
         dispatch({ type: SET_PARTNERS, payload: partners })
       })

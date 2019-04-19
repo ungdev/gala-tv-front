@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  let artists = null
+  let { artists } = state
   switch (action.type) {
     case SET_ARTISTS:
       return {
@@ -21,22 +21,19 @@ export default (state = initialState, action) => {
         artists: action.payload
       }
     case ADD_ARTIST:
-      artists = state.artists.slice()
-      artists.push(action.payload)
       return {
         ...state,
-        artists
+        artists: [...artists, action.payload]
       }
     case EDIT_ARTIST:
-      artists = state.artists
-        .slice()
-        .map(artist => (artist.id === action.payload.id ? action.payload : artist))
+      artists = artists.map(artist =>
+        artist.id === action.payload.id ? action.payload : artist
+      )
       return {
         ...state,
         artists
       }
     case REMOVE_ARTIST:
-      artists = state.artists.slice()
       artists = artists.filter(artist => artist.id !== action.payload)
       return {
         ...state,

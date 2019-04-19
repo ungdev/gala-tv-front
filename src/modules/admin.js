@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         users
       }
     case SET_ADMIN:
-      users = state.users.slice().map(user => {
+      users = state.users.map(user => {
         if (user.id !== action.payload) return user
         let { permissions } = user
         if (!permissions) permissions = []
@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
         users
       }
     case REMOVE_ADMIN:
-      users = state.users.slice().map(user => {
+      users = state.users.map(user => {
         if (user.id !== action.payload) return user
         let { permissions } = user
         permissions = permissions.filter(p => p !== 'admin')

@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  let events = null
+  let { events } = state
   switch (action.type) {
     case SET_EVENTS:
       return {
@@ -21,22 +21,19 @@ export default (state = initialState, action) => {
         events: action.payload
       }
     case ADD_EVENT:
-      events = state.events.slice()
-      events.push(action.payload)
       return {
         ...state,
-        events
+        events: [...events, action.payload]
       }
     case EDIT_EVENT:
-      events = state.events
-        .slice()
-        .map(event => (event.id === action.payload.id ? action.payload : event))
+      events = events.map(event =>
+        event.id === action.payload.id ? action.payload : event
+      )
       return {
         ...state,
         events
       }
     case REMOVE_EVENT:
-      events = state.events.slice()
       events = events.filter(event => event.id !== action.payload)
       return {
         ...state,
@@ -79,8 +76,8 @@ export const editEvent = (id, params) => {
     if (!authToken || authToken.length === 0) {
       return
     }
-    if(!params.artist) params.artist = ''
-    if(!params.partner) params.partner = ''
+    if (!params.artist) params.artist = ''
+    if (!params.partner) params.partner = ''
     try {
       const res = await axios.put(`events/${id}`, params, {
         headers: {
@@ -107,8 +104,8 @@ export const createEvent = params => {
     if (!authToken || authToken.length === 0) {
       return
     }
-    if(!params.artist) params.artist = ''
-    if(!params.partner) params.partner = ''
+    if (!params.artist) params.artist = ''
+    if (!params.partner) params.partner = ''
     try {
       const res = await axios.post('events', params, {
         headers: {

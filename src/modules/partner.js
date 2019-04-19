@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  let partners = null
+  let { partners } = state
   switch (action.type) {
     case SET_PARTNERS:
       return {
@@ -21,22 +21,19 @@ export default (state = initialState, action) => {
         partners: action.payload
       }
     case ADD_PARTNER:
-      partners = state.partners.slice()
-      partners.push(action.payload)
       return {
         ...state,
-        partners
+        partners: [...partners, action.payload]
       }
     case EDIT_PARTNER:
-      partners = state.partners
-        .slice()
-        .map(partner => (partner.id === action.payload.id ? action.payload : partner))
+      partners = partners.map(partner =>
+        partner.id === action.payload.id ? action.payload : partner
+      )
       return {
         ...state,
         partners
       }
     case REMOVE_PARTNER:
-      partners = state.partners.slice()
       partners = partners.filter(partner => partner.id !== action.payload)
       return {
         ...state,

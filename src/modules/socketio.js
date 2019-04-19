@@ -44,7 +44,6 @@ export const startSocketIO = () => {
     try {
       let socket = io.connect(process.env.REACT_APP_API_SOCKETIO)
       socket.on('censoreds', censoreds => {
-        console.log(censoreds)
         dispatch({ type: SET_CENSOREDS, payload: censoreds })
       })
       socket.on('partners', partners => {

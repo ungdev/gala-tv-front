@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import Time from './components/Time'
 import Partners from './components/Partners'
+import Events from './components/Events'
 import Messages from './components/Messages'
 import Tweets from './components/Tweets'
 import logo from '../../assets/logo.png'
@@ -18,6 +19,7 @@ class Home extends React.Component {
         </div>
         <div className='home-middle'>
           <Time />
+          <Events />
         </div>
         <div className='home-right'>
           <div className='home-tweets'>

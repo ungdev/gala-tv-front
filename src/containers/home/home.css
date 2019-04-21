@@ -24,7 +24,9 @@
 .home-middle {
   width: 40%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 .home-right {
   width: 30%;

@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
 }
 
 
-export const createNotification = (title, content) => {
+export const createNotification = (title, content, mobile) => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token
     if (!authToken || authToken.length === 0) {
@@ -22,7 +22,7 @@ export const createNotification = (title, content) => {
     try {
       await axios.post(
         'notifications',
-        { title, content },
+        { title, content, mobile },
         {
           headers: {
             Authorization: `Basic ${authToken}`,

@@ -28,7 +28,6 @@ class Events extends React.Component {
   }
   render() {
     let { events } = this.props
-    console.log(events)
     events = events
       .filter(event => !moment().isAfter(event.end)) // remove finished events
       .sort((a, b) => {
@@ -38,7 +37,6 @@ class Events extends React.Component {
         return 0
       })
       .splice(0, 3)
-    console.log(events)
     return (
       <div className='home-events'>
         <h1>Prochains événements :</h1>

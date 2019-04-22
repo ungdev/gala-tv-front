@@ -151,3 +151,33 @@ export const deleteEvent = id => {
     }
   }
 }
+
+export const delayEvents = time => {
+  return async (dispatch, getState) => {
+    const authToken = getState().login.token
+    if (!authToken || authToken.length === 0) {
+      return
+    }
+    try {
+      await axios.put(
+        `events`,
+        { minutes: time },
+        {
+          headers: {
+            Authorization: `Basic ${authToken}`,
+            'X-Date': moment().format()
+          }
+        }
+      )
+    } catch (err) {
+      console.log(err)
+      dispatch(
+        notifActions.notifSend({
+          message: errorToString(err.response.data.error),
+          kind: 'danger',
+          dismissAfter: 2000
+        })
+      )
+    }
+  }
+}

@@ -48,6 +48,8 @@ class EventDrawer extends React.Component {
         return
       }
       if (!err) {
+        const startHour = values.startHour.format().split('T')[1]
+        const endHour = values.endHour.format().split('T')[1]
         let event = {
           name: values.name,
           description: values.description,
@@ -59,11 +61,13 @@ class EventDrawer extends React.Component {
           start:
             values.startDate.format().split('T')[0] +
             'T' +
-            values.startHour.format().split('T')[1],
+            startHour.substring(0, startHour.length - 2) +
+            '00',
           end:
             values.endDate.format().split('T')[0] +
             'T' +
-            values.endHour.format().split('T')[1]
+            endHour.substring(0, endHour.length - 2) +
+            '00'
         }
         if (this.props.event) this.props.editEvent(this.props.event.id, event)
         else this.props.createEvent(event)

@@ -86,6 +86,12 @@ export const editEvent = (id, params) => {
         }
       })
       dispatch({ type: EDIT_EVENT, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'événement a été modifié",
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -114,6 +120,12 @@ export const createEvent = params => {
         }
       })
       dispatch({ type: ADD_EVENT, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'événement a été créé",
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -140,6 +152,13 @@ export const deleteEvent = id => {
         }
       })
       dispatch({ type: REMOVE_EVENT, payload: id })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'événement a été supprimé",
+          kind: 'warning',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -168,6 +187,13 @@ export const delayEvents = time => {
             'X-Date': moment().format()
           }
         }
+      )
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le retard a été enregistré',
+          kind: 'warning',
+          dismissAfter: 2000
+        })
       )
     } catch (err) {
       console.log(err)

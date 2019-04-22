@@ -84,6 +84,12 @@ export const editPartner = (id, params) => {
         }
       })
       dispatch({ type: EDIT_PARTNER, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le partenaire a été modifié',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -110,6 +116,12 @@ export const createPartner = params => {
         }
       })
       dispatch({ type: ADD_PARTNER, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le partenaire a été créé',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -136,6 +148,13 @@ export const deletePartner = id => {
         }
       })
       dispatch({ type: REMOVE_PARTNER, payload: id })
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le partenaire a été supprimé',
+          kind: 'warning',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({

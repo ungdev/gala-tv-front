@@ -25,6 +25,13 @@ export const editTweet = (id, params) => {
           'X-Date': moment().format()
         }
       })
+      dispatch(
+        notifActions.notifSend({
+          message:
+            'Le tweet a été modifié',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({

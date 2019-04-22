@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Input, Tag, Icon, Checkbox } from 'antd'
 import {
   createCensored,
-  editCensored,
   deleteCensored
 } from '../../../modules/censored'
 import { TweenOneGroup } from 'rc-tween-one'
@@ -132,7 +131,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  editCensored: (id, params) => dispatch(editCensored(id, params)),
   deleteCensored: id => dispatch(deleteCensored(id)),
   createCensored: params => dispatch(createCensored(params))
 })

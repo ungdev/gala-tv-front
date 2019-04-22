@@ -12,31 +12,6 @@ export default (state = initialState, action) => {
   }
 }
 
-export const editCensored = (id, params) => {
-  return async (dispatch, getState) => {
-    const authToken = getState().login.token
-    if (!authToken || authToken.length === 0) {
-      return
-    }
-    try {
-      await axios.put(`censoreds/${id}`, params, {
-        headers: {
-          Authorization: `Basic ${authToken}`,
-          'X-Date': moment().format()
-        }
-      })
-    } catch (err) {
-      dispatch(
-        notifActions.notifSend({
-          censored: errorToString(err.response.data.error),
-          kind: 'danger',
-          dismissAfter: 2000
-        })
-      )
-    }
-  }
-}
-
 export const createCensored = params => {
   return async (dispatch, getState) => {
     const authToken = getState().login.token

@@ -84,6 +84,12 @@ export const editArtist = (id, params) => {
         }
       })
       dispatch({ type: EDIT_ARTIST, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'artiste a été modifié",
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -110,6 +116,12 @@ export const createArtist = params => {
         }
       })
       dispatch({ type: ADD_ARTIST, payload: res.data })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'artiste a été créé",
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -136,6 +148,13 @@ export const deleteArtist = id => {
         }
       })
       dispatch({ type: REMOVE_ARTIST, payload: id })
+      dispatch(
+        notifActions.notifSend({
+          message: "L'artiste a été supprimé",
+          kind: 'warning',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({

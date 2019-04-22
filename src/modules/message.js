@@ -25,6 +25,12 @@ export const editMessage = (id, params) => {
           'X-Date': moment().format()
         }
       })
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le message a été modifié',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -54,6 +60,12 @@ export const createMessage = content => {
           }
         }
       )
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le message a été créé',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({
@@ -79,6 +91,13 @@ export const deleteMessage = id => {
           'X-Date': moment().format()
         }
       })
+      dispatch(
+        notifActions.notifSend({
+          message: 'Le message a été supprimé',
+          kinf: 'warning',
+          dismissAfter: 2000
+        })
+      )
     } catch (err) {
       dispatch(
         notifActions.notifSend({

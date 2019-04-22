@@ -1,0 +1,34 @@
+.notifications {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-family: 'LemonMilk'
+}
+
+.notifications-container {
+  background-color: white;
+  border: 5px solid white;
+  box-shadow: 0 0 7px 0 white;
+  border-radius: 20px;
+  width:100%;
+  height: 100%; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+
+.notifications-container > .notification-title {
+  font-size: 70px;
+  margin-bottom: 80px;
+}
+
+.notifications-container > .notification-content {
+  font-size: 50px;
+}

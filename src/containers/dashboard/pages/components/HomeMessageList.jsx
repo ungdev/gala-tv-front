@@ -30,7 +30,7 @@ class HomeMessageList extends React.Component {
   render() {
     let { messages } = this.props
     return (
-      <div style={{ width: '49%' }}>
+      <React.Fragment>
         <h1>Liste des messages</h1>
         <Input
           className='messages-input'
@@ -78,7 +78,7 @@ class HomeMessageList extends React.Component {
             </List.Item>
           )}
         />
-      </div>
+      </React.Fragment>
     )
   }
 }

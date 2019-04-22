@@ -8,6 +8,7 @@ import event from './event'
 import image from './image'
 import login from './login'
 import message from './message'
+import notification from './notification'
 import partner from './partner'
 import socketio from './socketio'
 import tweet from './tweet'
@@ -23,6 +24,7 @@ export default combineReducers({
   image,
   login,
   message,
+  notification,
   partner,
   socketio,
   tweet,

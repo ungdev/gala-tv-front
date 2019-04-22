@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import './styles/home.css'
 import { editTweet } from '../../../modules/tweet'
 import HomeTwitterList from './components/HomeTwitterList'
+import HomeMessageList from './components/HomeMessageList'
 import HomeEventList from './components/HomeEventList'
+import Censoreds from './Censoreds'
 
 class AdminHome extends React.Component {
   render() {
@@ -11,6 +13,8 @@ class AdminHome extends React.Component {
       <div className='admin-container'>
         <HomeTwitterList />
         <HomeEventList />
+        <Censoreds style={{ marginTop: '20px' }} width='49%' />
+        <HomeMessageList />
       </div>
     )
   }

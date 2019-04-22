@@ -84,7 +84,7 @@ class HomeEventList extends React.Component {
             })}
           pagination={false}
           columns={columns}
-          scroll={{ y: 200 }}
+          scroll={{ y: 300 }}
           rowKey='id'
         />
       </React.Fragment>

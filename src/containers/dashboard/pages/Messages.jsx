@@ -49,6 +49,7 @@ class Messages extends React.Component {
           className='messages-input'
           onChange={e => this.setState({ input: e.target.value })}
           value={this.state.input}
+          placeholder='ajouter un message'
         />
         <Button type='primary' onClick={this.sendMessage}>
           {this.state.messageToModify ? 'Modifier' : 'Envoyer'}

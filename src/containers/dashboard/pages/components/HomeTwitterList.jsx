@@ -49,7 +49,7 @@ class HomeTwitterList extends React.Component {
         dataSource={this.props.tweets}
         pagination={false}
         columns={columns}
-        scroll={{ y: 400 }}
+        scroll={{ y: 300 }}
         rowKey='id'
       />
     )

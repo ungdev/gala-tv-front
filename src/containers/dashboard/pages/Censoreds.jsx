@@ -73,7 +73,7 @@ class Censoreds extends React.Component {
     const { inputVisible, inputValue } = this.state
     const tagChild = this.props.censoreds.map(this.forMap)
     return (
-      <div>
+      <div style={{ width: this.props.width || '100%' }}>
         <h1>Liste des mots censurés</h1>
         <div style={{ marginBottom: 16 }}>
           <TweenOneGroup

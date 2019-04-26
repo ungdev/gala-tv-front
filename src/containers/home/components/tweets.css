@@ -1,19 +1,37 @@
-.tweets{
+.tweets {
   height: 80%;
   width: 80%;
 }
 
-.tweet{
+.tweet {
   font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: white;
 }
-.tweet-from {
-  font-size: 15px;
-  margin-bottom: 8px;
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
 }
+.tweets-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tweets-title > img {
+  width: 100px;
+  height: 90px;
+}
+.tweet-from {
+  color: #cccccc;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
 .tweet-text {
-  margin-bottom: 23px;
+  margin-bottom: 20px;
 }

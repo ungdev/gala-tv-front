@@ -28,9 +28,11 @@ class Tweets extends React.Component {
       <div className='tweets'>
         {tweets.map(tweet => (
           <div className='tweet' key={tweet.id}>
-            <span className='tweet-from'>
-              De @{tweet.user} à {moment(tweet.createdAt).format('HH:mm')} :
-            </span>
+            <div className='tweet-header'>
+              <span className='tweet-username'>{tweet.userName}</span>
+              <span className='tweet-from'>@{tweet.user} - {moment(tweet.createdAt).format('HH:mm')}</span>
+            </div>
+
             <span className='tweet-text'>
               {tweet.text.length > 100
                 ? this.replace(tweet.text).substr(0, 100) + '...'

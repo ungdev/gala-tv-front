@@ -2,6 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import './styles/events.css'
+import EventHorizontal from './EventHorizontal'
+import EventVertical from './EventVertical'
 
 class Events extends React.Component {
   constructor(props) {
@@ -21,11 +23,6 @@ class Events extends React.Component {
   componentWillUnmount() {
     clearInterval(this.intervalID)
   }
-  getTime(time) {
-    const m = moment(time)
-    if (m.isBefore()) return 'En ce moment'
-    return 'À ' + m.format('HH[h]mm')
-  }
   render() {
     let { events } = this.props
     events = events
@@ -41,20 +38,13 @@ class Events extends React.Component {
       <div className='home-events'>
         <h1>Prochains événements :</h1>
         <div className='events-container'>
-          {events.map(event => (
-            <div key={event.id} className='event-main'>
-              <div className='event-image'>
-                <img src={process.env.REACT_APP_API + event.image} alt='' />
-                <div className='event-name'>
-                  <h1>{event.name}</h1>
-                </div>
-              </div>
-              <div className='event-informations'>
-                <span>{this.getTime(event.start)}</span>
-                <span>{event.place}</span>
-              </div>
-            </div>
-          ))}
+          {events.map(event =>
+            this.props.horizontal ? (
+              <EventHorizontal event={event} />
+            ) : (
+              <EventVertical event={event} />
+            )
+          )}
         </div>
       </div>
     )

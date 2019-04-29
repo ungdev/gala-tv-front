@@ -13,8 +13,8 @@
   margin-bottom: 10px;
 }
 .home-horizontal .event-main > .event-image {
-  width: 280px;
-  height: 157px;
+  width: 250px;
+  height: 140px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -27,12 +27,12 @@
 .home-horizontal .event-image > .event-name {
   position: absolute;
   z-index: 999;
-  top: 30%; /* Adjust this value to move the positioned div up and down */
+  top: 25%; /* Adjust this value to move the positioned div up and down */
   text-align: center;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  font-size: 1.3vw;
+  font-size: 1vw;
 }
 .home-horizontal .event-name > h1 {
   color: white;

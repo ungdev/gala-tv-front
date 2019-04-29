@@ -47,3 +47,7 @@
   margin-bottom: 20px;
   font-size: 4vw;
 }
+.home-vertical .home-events > h1 {
+  width: 100%;
+  font-size: 3vw;
+}

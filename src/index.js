@@ -1,4 +1,6 @@
 import 'react-app-polyfill/ie11'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'

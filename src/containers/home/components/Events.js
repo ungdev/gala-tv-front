@@ -40,9 +40,9 @@ class Events extends React.Component {
         <div className='events-container'>
           {events.map(event =>
             this.props.horizontal ? (
-              <EventHorizontal event={event} />
+              <EventHorizontal event={event} key={event.id} />
             ) : (
-              <EventVertical event={event} />
+              <EventVertical event={event} key={event.id} />
             )
           )}
         </div>

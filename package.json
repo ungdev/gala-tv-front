@@ -33,5 +33,18 @@
   "proxy": "http://localhost:3000",
   "devDependencies": {
     "prettier": "^1.16.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "IE 11",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

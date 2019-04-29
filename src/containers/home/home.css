@@ -2,6 +2,9 @@
   font-family: 'LemonMilk';
   src: url(./assets/fonts/LemonMilk.otf);
 }
+html {
+  -ms-overflow-style: none;
+}
 
 .home {
   background: #282660 url('./assets/background.png');

@@ -3,11 +3,11 @@
   height: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden
 }
 .custom-marquee > * {
   position: absolute;
-  top: auto;
-  bottom: auto;
+  top: 10px;
 }
 .custom-marquee > span > * {
   margin-left: 100px;

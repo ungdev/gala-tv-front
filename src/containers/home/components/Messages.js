@@ -10,9 +10,7 @@ class Messages extends React.Component {
       .map((m, i) => <span key={i} style={{ margin: '0 100px' }}>{m.content}</span>)
     return (
       <div className='messages'>
-        <Marquee className='messages-scroll' fill speed={10}>
-          {messages}
-        </Marquee>
+        <Marquee>{messages}</Marquee>
       </div>
     )
   }

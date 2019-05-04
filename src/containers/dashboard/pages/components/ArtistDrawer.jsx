@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { actions as notifActions } from 'redux-notifications'
-import { Drawer, Form, Button, Input, Checkbox } from 'antd'
+import { Drawer, Form, Button, Input, Checkbox, DatePicker, TimePicker } from 'antd'
+import moment from 'moment'
 import { createArtist, editArtist } from '../../../../modules/artist'
 import { fetchArtists } from '../../../../modules/artist'
 import '../styles/components.css'
@@ -28,12 +29,17 @@ class ArtistDrawer extends React.Component {
         return
       }
       if (!err) {
+        const date = moment(`${values.eventDate.format('YYYY-MM-DD')}T${values.eventTime.format('HH:mm')}`)
+
         let artist = {
           name: values.name,
           link: values.link,
           visible: this.state.artistVisible,
-          image: this.state.image
+          image: this.state.image,
+          eventDate: date,
+          eventPlace: values.eventPlace
         }
+
         if (this.props.artist)
           this.props.editArtist(this.props.artist.id, artist)
         else this.props.createArtist(artist)
@@ -60,6 +66,10 @@ class ArtistDrawer extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     const { artist } = this.props
+    
+    if(artist)
+      console.log(moment(artist.eventDate, 'YYYY-MM-DDTHH:mm'))
+
     return (
       <Drawer
         title={artist ? 'Modifier un artiste' : 'Créer un artiste'}
@@ -87,16 +97,6 @@ class ArtistDrawer extends React.Component {
               initialValue: artist ? artist.link : ''
             })(<Input placeholder="https://monartiste.com" />)}
           </Form.Item>
-          <Form.Item>
-            <Checkbox
-              checked={this.state.artistVisible}
-              onChange={() =>
-                this.setState({ artistVisible: !this.state.artistVisible })
-              }
-            >
-              {this.state.artistVisible ? 'Visible' : 'Caché'}
-            </Checkbox>
-          </Form.Item>
           <div
             style={{
               width: '100%',
@@ -112,6 +112,31 @@ class ArtistDrawer extends React.Component {
               buttonClickedTime={this.props.buttonClickedTime}
             />
           </div>
+          <Form.Item label="Représentation">
+            <div style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
+              {getFieldDecorator('eventDate', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
+                <DatePicker placeholder="Date" />
+              )}
+            </div>
+            <div style={{ display: 'inline-block', width: 'calc(50% - 12px)', margin: '0 0 10px 10px' }}>
+              {getFieldDecorator('eventTime', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
+                <TimePicker format="HH:mm" placeholder="Horaire" />
+              )}
+            </div>
+            {getFieldDecorator('eventPlace', { initialValue: artist ? artist.eventPlace : '' })(
+              <Input placeholder="Emplacement" />
+            )}
+          </Form.Item>
+          <Form.Item>
+            <Checkbox
+              checked={this.state.artistVisible}
+              onChange={() =>
+                this.setState({ artistVisible: !this.state.artistVisible })
+              }
+            >
+              {this.state.artistVisible ? 'Visible' : 'Caché'}
+            </Checkbox>
+          </Form.Item>
           <Form.Item>
             <Button type='primary' htmlType='submit'>
               {artist ? 'Modifier' : 'Créer'}

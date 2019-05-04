@@ -8,6 +8,7 @@ import moment from 'moment'
 class Artists extends React.Component {
   constructor(props) {
     super(props)
+
     props.fetchArtists()
     this.state = {
       artist: null,
@@ -95,10 +96,19 @@ class Artists extends React.Component {
             >
               <List.Item.Meta
                 title={item.name}
-                description={<a href={item.link}>{item.link}</a>}
+                description={(
+                  <div>
+                    Page de l'artiste : <a href={item.link}>{item.link}</a><br />
+                    Représentation :
+                      <strong>
+                        {item.eventDate
+                          ? <span> {moment(item.eventDate).format('DD/MM/YYYY [à] HH:mm')} ({item.eventPlace || <i>Aucun emplacement</i>})</span>
+                          : <i> Aucune</i>
+                        }
+                      </strong>
+                  </div>
+                )}
               />
-              {item.description} <br />
-              <br />
               {item.visible
                 ? 'Cet artiste est affiché sur les écrans'
                 : "Cet artiste n'est pas affiché sur les écrans"}

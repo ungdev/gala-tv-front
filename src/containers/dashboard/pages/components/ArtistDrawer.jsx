@@ -29,7 +29,10 @@ class ArtistDrawer extends React.Component {
         return
       }
       if (!err) {
-        const date = moment(`${values.eventDate.format('YYYY-MM-DD')}T${values.eventTime.format('HH:mm')}`)
+        let date = undefined
+        if(values.eventDate && values.eventTime) {
+          date = moment(`${values.eventDate.format('YYYY-MM-DD')}T${values.eventTime.format('HH:mm')}`)
+        }
 
         let artist = {
           name: values.name,

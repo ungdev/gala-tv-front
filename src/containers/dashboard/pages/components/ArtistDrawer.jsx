@@ -66,9 +66,6 @@ class ArtistDrawer extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     const { artist } = this.props
-    
-    if(artist)
-      console.log(moment(artist.eventDate, 'YYYY-MM-DDTHH:mm'))
 
     return (
       <Drawer
@@ -78,7 +75,7 @@ class ArtistDrawer extends React.Component {
         visible={this.props.visible}
       >
         <Form layout='vertical' onSubmit={this.handleSubmit} hideRequiredMark>
-          <Form.Item label='Nom' style={{ marginBottom: 0 }}>
+          <Form.Item label='Nom'>
             {getFieldDecorator('name', {
               rules: [
                 { required: true, message: 'Vous devez entrer un nom !' }
@@ -113,16 +110,16 @@ class ArtistDrawer extends React.Component {
             />
           </div>
           <Form.Item label="Représentation">
-            <div style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}>
-              {getFieldDecorator('eventDate', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
-                <DatePicker placeholder="Date" />
-              )}
-            </div>
-            <div style={{ display: 'inline-block', width: 'calc(50% - 12px)', margin: '0 0 10px 10px' }}>
-              {getFieldDecorator('eventTime', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
-                <TimePicker format="HH:mm" placeholder="Horaire" />
-              )}
-            </div>
+            {getFieldDecorator('eventDate', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
+              <DatePicker placeholder="Date" />
+            )}
+          </Form.Item>
+          <Form.Item>
+            {getFieldDecorator('eventTime', { initialValue: (artist && artist.eventDate) ? moment(artist.eventDate, 'YYYY-MM-DDTHH:mm:ss.SSSSZ') : undefined })(
+              <TimePicker format="HH:mm" placeholder="Horaire" />
+            )}
+          </Form.Item>
+          <Form.Item>
             {getFieldDecorator('eventPlace', { initialValue: artist ? artist.eventPlace : '' })(
               <Input placeholder="Emplacement" />
             )}

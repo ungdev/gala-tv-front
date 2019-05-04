@@ -95,7 +95,7 @@ class Artists extends React.Component {
             >
               <List.Item.Meta
                 title={item.name}
-                description={<a>{item.link}</a>}
+                description={<a href={item.link}>{item.link}</a>}
               />
               {item.description} <br />
               <br />

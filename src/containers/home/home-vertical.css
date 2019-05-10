@@ -24,7 +24,6 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 4%;
-  margin-bottom: 8%;
   height: 20%;
 }
 .home-vertical .home-middle {
@@ -36,20 +35,19 @@
   height: 80%;
 }
 .home-vertical .home-middle > * {
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .home-vertical .home-tweets {
-  margin-top: 95px;
   width: 80%;
-  height: 80%;
+  height: 90%;
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  background-color: rgba(14, 8, 74, 0.9);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
   overflow: hidden;
 }
 .home-vertical .home-tweets > .tweets-title {
@@ -86,7 +84,6 @@
   width: 90%;
 }
 .home-vertical .home-logo > img {
-  height: 90%;
   width: 90%;
 }
 .home-vertical .home-time {
@@ -96,12 +93,11 @@
 }
 .home-vertical .partners {
   margin-top: 40px;
-  padding: 5px;
+  padding: 10px;
   width: 50%;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  background-color: rgba(14, 8, 74, 0.9);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
 }
 .home-vertical .partners-container {
   position: relative;

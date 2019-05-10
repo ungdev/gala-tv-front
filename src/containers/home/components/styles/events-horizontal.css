@@ -9,8 +9,8 @@
   margin-bottom: 10px;
 }
 .home-horizontal .event-main > .event-image {
-  width: 250px;
-  height: 140px;
+  width: 200px;
+  height: 112px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 .home-horizontal .event-informations > h1 {
-  font-size: 1.8vw;
+  font-size: 1.4vw;
 }
 .home-horizontal .event-informations > .time {
   font-size: 1vw;

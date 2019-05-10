@@ -5,8 +5,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 .home-horizontal .event-main > .event-image {
   width: 200px;
@@ -39,7 +37,6 @@
   font-size: 1.3vw;
   width: 45%;
   text-align: center;
-  height: 100%;
   padding-left: 40px;
   width: 65%;
 }

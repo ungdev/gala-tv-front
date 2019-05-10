@@ -13,28 +13,30 @@
 }
 
 .notifications-container {
-  background-color: white;
-  border: 5px solid white;
-  box-shadow: 0 0 7px 0 white;
-  border-radius: 20px;
   width:100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 40px;
+  position: relative;
 }
 
+.notifications-container > img {
+  width: 100%;
+}
 
 .notifications-container > .notification-title {
-  font-size: 6vw;
-  margin-bottom: 80px;
-  width: 100%;
+  position: absolute;
+  padding-left: 5%;
+  padding-right: 5%;
+  top: 25%;
+  font-size: 4vw;
+  width: 95%;
 }
 
 .notifications-container > .notification-content {
-  font-size: 50px;
-  width: 100%;
-  font-size: 4vw;
+  position: absolute;
+  top: 50%;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 95%;
+  font-size: 3.2vw;
 }

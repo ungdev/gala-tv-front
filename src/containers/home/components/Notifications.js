@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './styles/notifications.css'
+import img from '../assets/notif-tv.png'
 
 class Notifications extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class Notifications extends React.Component {
     return (
       <div className='notifications'>
         <div className='notifications-container'>
+          <img src={img} alt='' />
           <h1 className='notification-title'>
             {this.props.notification.title}
           </h1>

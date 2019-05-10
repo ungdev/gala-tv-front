@@ -45,7 +45,7 @@ html {
 }
 .home-tweets {
   width: 80%;
-  height: 80%;
+  height: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -86,7 +86,7 @@ html {
 .partners {
   margin-top: 40px;
   padding: 5px;
-  width: 50%;
+  width: 80%;
   background-color: rgba(14, 8, 74, 0.9);
   border: 5px solid rgba(14, 8, 74, 0);
   border-radius: 30px;

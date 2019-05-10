@@ -12,13 +12,11 @@ export default props => {
     <div key={event.id} className='event-main'>
       <div className='event-image'>
         <img src={process.env.REACT_APP_API + event.image} alt='' />
-        <div className='event-name'>
-          <h1>{event.name}</h1>
-        </div>
       </div>
       <div className='event-informations'>
-        <span>{time}</span>
-        <span>{event.place}</span>
+        <h1>{event.name}</h1>
+        <span className='time'>{time}</span>
+        <span className='place'>{event.place}</span>
       </div>
     </div>
   )

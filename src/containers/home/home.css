@@ -50,10 +50,9 @@ html {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  background-color: rgba(14, 8, 74, 0.9);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
   overflow: hidden;
 }
 .home-tweets > .tweets-title {
@@ -82,16 +81,15 @@ html {
 .home-time {
   color: white;
   padding: 20px;
-  font-size: 40px;
+  font-size: 90px;
 }
 .partners {
   margin-top: 40px;
   padding: 5px;
   width: 50%;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  background-color: rgba(14, 8, 74, 0.9);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
 }
 .partners-container {
   position: relative;

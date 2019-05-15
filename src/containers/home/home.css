@@ -50,7 +50,7 @@ html {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  background-color: rgba(14, 8, 74, 0.9);
+  background-color: rgba(14, 8, 74, 0.5);
   border: 5px solid rgba(14, 8, 74, 0);
   border-radius: 30px;
   overflow: hidden;
@@ -86,7 +86,7 @@ html {
 .partners {
   margin-top: 40px;
   width: 80%;
-  background-color: rgba(14, 8, 74, 0.9);
+  background-color: rgba(14, 8, 74, 0.5);
   border: 5px solid rgba(14, 8, 74, 0);
   border-radius: 30px;
 }

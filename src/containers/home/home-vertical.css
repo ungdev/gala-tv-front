@@ -4,7 +4,6 @@
 }
 
 .home {
-  background: #282660 url('./assets/background.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -14,6 +13,8 @@
   height: 100%;
 }
 .home-vertical {
+  background-color: #282660;
+  background-image: url('./assets/background-vertical.png');
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -45,15 +45,14 @@ html {
 }
 .home-tweets {
   width: 80%;
-  height: 80%;
+  height: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  background-color: rgba(14, 8, 74, 0.5);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
   overflow: hidden;
 }
 .home-tweets > .tweets-title {
@@ -62,7 +61,7 @@ html {
   font-size: 25px;
   text-align: center;
 }
-.home-footer {
+.home-horizontal .home-footer {
   top: 90%;
   height: 10%;
   width: 100%;
@@ -75,23 +74,21 @@ html {
   justify-content: center;
   align-items: center;
 }
-.home-logo > img {
+.home-horizontal .home-logo > img {
   height: 90%;
   width: 90%;
 }
 .home-time {
   color: white;
   padding: 20px;
-  font-size: 40px;
+  font-size: 90px;
 }
 .partners {
   margin-top: 40px;
-  padding: 5px;
-  width: 50%;
-  background-color: rgba(188, 22, 124, 0.7);
-  border: 5px solid rgba(188, 22, 124, 0);
-  box-shadow: 0 0 7px 0 #bc167c;
-  border-radius: 20px;
+  width: 80%;
+  background-color: rgba(14, 8, 74, 0.5);
+  border: 5px solid rgba(14, 8, 74, 0);
+  border-radius: 30px;
 }
 .partners-container {
   position: relative;
@@ -107,7 +104,7 @@ html {
   align-items: center;
 }
 .partners-image > img {
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
+  max-width: 95%;
+  max-height: 95%;
+  width: 95%;
 }

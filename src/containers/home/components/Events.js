@@ -36,7 +36,7 @@ class Events extends React.Component {
       .splice(0, 3)
     return (
       <div className='home-events'>
-        <h1>Prochains événements :</h1>
+        <h1>Prochains événements</h1>
         <div className='events-container'>
           {events.map(event =>
             this.props.horizontal ? (

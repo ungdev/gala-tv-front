@@ -13,28 +13,30 @@
 }
 
 .notifications-container {
-  background-color: white;
-  border: 5px solid white;
-  box-shadow: 0 0 7px 0 white;
-  border-radius: 20px;
   width:100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 40px;
+  position: relative;
 }
 
+.notifications-container > img {
+  width: 100%;
+}
+
+.notifications-container > :not(img) {
+  position: absolute;
+  padding-left: 15%;
+  padding-right: 15%;
+  left: 0px;
+  right: 0px;
+}
 
 .notifications-container > .notification-title {
-  font-size: 6vw;
-  margin-bottom: 80px;
-  width: 100%;
+  top: 15%;
+  font-size: 7vw;
 }
 
 .notifications-container > .notification-content {
-  font-size: 50px;
-  width: 100%;
-  font-size: 4vw;
+  top: 55%;
+  font-size: 5vw;
 }

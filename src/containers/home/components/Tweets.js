@@ -21,6 +21,19 @@ class Tweets extends React.Component {
             .findIndex(
               censored =>
                 t.text.toLowerCase().search(censored.word.toLowerCase()) !== -1
+            ) === -1 ||
+          censoreds
+            .filter(censored => censored.level > 0)
+            .findIndex(
+              censored =>
+                t.userName.toLowerCase().search(censored.word.toLowerCase()) !==
+                -1
+            ) === -1 ||
+          censoreds
+            .filter(censored => censored.level > 0)
+            .findIndex(
+              censored =>
+                t.user.toLowerCase().search(censored.word.toLowerCase()) !== -1
             ) === -1
       )
 
@@ -29,8 +42,10 @@ class Tweets extends React.Component {
         {tweets.map(tweet => (
           <div className='tweet' key={tweet.id}>
             <div className='tweet-header'>
-              <span className='tweet-username'>{tweet.userName}</span>
-              <span className='tweet-from'>@{tweet.user} - {moment(tweet.createdAt).format('HH:mm')}</span>
+              <span className='tweet-username'>{this.replace(tweet.userName)}</span>
+              <span className='tweet-from'>
+                @{this.replace(tweet.user)} - {moment(tweet.createdAt).format('HH:mm')}
+              </span>
             </div>
 
             <span className='tweet-text'>

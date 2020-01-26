@@ -40,7 +40,7 @@ class AdminValid extends React.Component {
       },
       {
         title: 'Permissions',
-        dataIndex: 'permissions'
+        dataIndex: 'Permissions'
       },
       {
         title: 'Actions',

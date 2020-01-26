@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
       users = action.payload.map(user => {
         return {
           ...user,
-          admin: user.permissions.findIndex(u => u === 'admin') !== -1
+          admin: user.Permissions.findIndex(u => u === 'admin') !== -1
         }
       })
       return {
@@ -28,10 +28,10 @@ export default (state = initialState, action) => {
     case SET_ADMIN:
       users = state.users.map(user => {
         if (user.id !== action.payload) return user
-        let { permissions } = user
-        if (!permissions) permissions = []
-        permissions.push('admin')
-        return { ...user, permissions, admin: true }
+        let { Permissions } = user
+        if (!Permissions) Permissions = []
+        Permissions.push('admin')
+        return { ...user, Permissions, admin: true }
       })
       return {
         ...state,
@@ -40,9 +40,9 @@ export default (state = initialState, action) => {
     case REMOVE_ADMIN:
       users = state.users.map(user => {
         if (user.id !== action.payload) return user
-        let { permissions } = user
-        permissions = permissions.filter(p => p !== 'admin')
-        return { ...user, permissions, admin: false }
+        let { Permissions } = user
+        Permissions = Permissions.filter(p => p !== 'admin')
+        return { ...user, Permissions, admin: false }
       })
       return {
         ...state,

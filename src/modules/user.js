@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         user: {
           ...action.payload,
           admin: action.payload
-            ? action.payload.permissions.findIndex(p => p === 'admin') !== -1
+            ? action.payload.Permissions.findIndex(p => p === 'admin') !== -1
             : false
         }
       }

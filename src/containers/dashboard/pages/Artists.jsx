@@ -60,7 +60,7 @@ class Artists extends React.Component {
                   onClick={() => {
                     this.props.editArtist(item.id, {
                       name: item.name,
-                      link: item.link,
+                      links: item.links,
                       visible: !item.visible,
                       image: item.image
                     })
@@ -98,7 +98,11 @@ class Artists extends React.Component {
                 title={item.name}
                 description={(
                   <div>
-                    Page de l'artiste : <a href={item.link}>{item.link}</a><br />
+                    {item.Links && item.Links.map(link => (
+                    <React.Fragment>
+                      <span>{link.type} : <a href={link.uri}>{link.uri}</a></span>
+                      <br />
+                    </React.Fragment>))}
                     Représentation :
                       <strong>
                         {item.eventDate

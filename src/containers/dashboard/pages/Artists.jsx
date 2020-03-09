@@ -100,7 +100,7 @@ class Artists extends React.Component {
                   <div>
                     {item.Links && item.Links.map(link => (
                     <React.Fragment>
-                      <span>{link.type} : <a href={link.uri}>{link.uri}</a></span>
+                      <span key={link.type}>{link.type} : <a href={link.uri}>{link.uri}</a></span>
                       <br />
                     </React.Fragment>))}
                     Représentation :

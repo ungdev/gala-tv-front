@@ -24,10 +24,6 @@ cp .env .env.local
 # makes your changes in .env.local, which will not be pushed
 nano .env.local
 
-# copy env file for development environment
-cp .env.development .env.development.local
-# makes your changes in .env.development.local, which will not be pushed
-nano .env.development.local
 ```
 
 ## Commands

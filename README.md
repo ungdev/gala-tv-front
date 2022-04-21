@@ -8,11 +8,11 @@
 ## Installation
 
 ```
-git clone git@github.com:ungdev/TV-Front.git
+git clone git@github.com:ungdev/gala-tv-front.git
 # or
-git clone https://github.com/ungdev/TV-Front.git
+git clone https://github.com/ungdev/gala-tv-front.git
 
-cd TV-Front
+cd gala-tv-front
 yarn
 ```
 
@@ -20,9 +20,9 @@ yarn
 
 ```
 # copy env file for all environments
-cp .env .env.local
+cp .env.example .env
 # makes your changes in .env.local, which will not be pushed
-nano .env.local
+nano .env
 
 ```
 

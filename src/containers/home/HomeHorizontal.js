@@ -26,7 +26,7 @@ class HomeHorizontal extends React.Component {
           <div className='home-right'>
             <div className='home-tweets'>
               <span className='tweets-title'>
-                Vos tweets avec le #galautt2019
+                Annonces
               </span>
               <Tweets />
             </div>

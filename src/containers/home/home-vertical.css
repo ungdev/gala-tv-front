@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'LemonMilk';
-  src: url(./assets/fonts/LemonMilk.otf);
+  font-family: 'Hero';
+  src: url(./assets/fonts/HeroNewRegular.otf);
 }
 
 .home {
@@ -8,7 +8,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'LemonMilk';
+  font-family: 'Hero';
   font-size: 16px;
   height: 100%;
 }

@@ -28,9 +28,9 @@ class HomeVertical extends React.Component {
           <div className='home-middle'>
             <Events />
             <div className='home-tweets'>
-              <div className='tweets-title'>
+              <div className='tweets-title'> {/* changer la classe pour que ça ait du sens mais faire attention ça disparait*/}
                 <img src={twitter} alt='' />
-                <span>Vos tweets avec le #galautt2019</span>
+                <span>Annonces</span>
               </div>
               <Tweets />
             </div>

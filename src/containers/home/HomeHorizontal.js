@@ -31,9 +31,6 @@ class HomeHorizontal extends React.Component {
               <Tweets />
             </div>
           </div>
-          <div className='home-footer'>
-            <Messages />
-          </div>
         </div>
         <Notifications />
       </React.Fragment>

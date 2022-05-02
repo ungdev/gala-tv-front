@@ -23,14 +23,6 @@ class HomeHorizontal extends React.Component {
             <Time />
             <Events horizontal />
           </div>
-          <div className='home-right'>
-            <div className='home-tweets'>
-              <span className='tweets-title'>
-                Annonces
-              </span>
-              <Tweets />
-            </div>
-          </div>
         </div>
         <Notifications />
       </React.Fragment>

@@ -37,6 +37,11 @@ html {
   flex-direction: column;
   height: 95%;
 }
+
+.home-horizontal > .home-middle {
+  flex-grow: 1;
+}
+
 .home-right {
   width: 30%;
   height: 100%;

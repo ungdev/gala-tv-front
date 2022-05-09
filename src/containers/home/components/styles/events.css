@@ -18,6 +18,8 @@
     -2px -2px 20px  #9B1F1F;
   border-radius: 30px;
   padding: 2em;
+  background-color: rgba(0, 0, 0, 0.36);
+  margin-right: 44px;
 }
 
 .home-events>h1{
@@ -39,7 +41,9 @@
   padding: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.36);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
 }
 .event-main > .event-image {
   height: 90%;
@@ -50,6 +54,7 @@
 .event-image > img {
   max-width: 100%;
   max-height: 100%;
+  border-radius: 10px;
 }
 .event-image > .event-name {
   position: absolute;

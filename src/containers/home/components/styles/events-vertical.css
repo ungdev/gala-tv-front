@@ -37,6 +37,7 @@
 .home-vertical .home-events > h1 {
   width: 100%;
   font-size: 3vw;
+  text-align: center;
 }
 
 .home-vertical .event-informations > span {

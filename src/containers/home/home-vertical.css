@@ -14,10 +14,11 @@
 }
 .home-vertical {
   background-color: #282660;
-  background-image: url('./assets/background-vertical.png');
+  background-image: url('./assets/background-horizontal.png');
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 20px;
 }
 .home-vertical .home-top {
   width: 100%;
@@ -25,19 +26,22 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 4%;
-  height: 20%;
+  flex-grow: 1;
 }
 .home-vertical .home-middle {
   display: flex;
-  align-items: flex-start;
+  /*align-items: flex-start;*/
   justify-content: space-evenly;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 80%;
+  /*height: 80%;*/
+  flex-grow: 2;
+  row-gap: 20px;
 }
 .home-vertical .home-middle > * {
   margin-left: 20px;
   margin-right: 20px;
+  width: 70%;
 }
 .home-vertical .home-tweets {
   width: 80%;

@@ -15,25 +15,26 @@ class HomeVertical extends React.Component {
       <React.Fragment>
         <div className='home home-vertical'>
           <div className='home-top'>
-            <div className='home-time-container'>
-              <Time />
-            </div>
             <div className='home-logo'>
               <img src={logo} alt='' />
             </div>
-            <div className='home-partners'>
-              <Partners />
+            <div className='home-time-and-partners-container'>
+              <div className='home-time-container'>
+                <Time />
+              </div>
+              <div className='home-partners'>
+                <Partners />
+              </div>
             </div>
           </div>
           <div className='home-middle'>
             <Events />
-            <div className='home-tweets'>
+            {/*<div className='home-tweets'>
               <div className='tweets-title'> {/* changer la classe pour que ça ait du sens mais faire attention ça disparait*/}
-                <img src={twitter} alt='' />
-                <span>Annonces</span>
+                {/*<span>Annonces</span>
               </div>
               <Tweets />
-            </div>
+            </div>*/}
           </div>
         </div>
         <Notifications />

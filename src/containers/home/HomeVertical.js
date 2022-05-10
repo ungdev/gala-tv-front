@@ -22,9 +22,6 @@ class HomeVertical extends React.Component {
               <div className='home-time-container'>
                 <Time />
               </div>
-              <div className='home-partners'>
-                <Partners />
-              </div>
             </div>
           </div>
           <div className='home-middle'>
@@ -35,6 +32,9 @@ class HomeVertical extends React.Component {
               </div>
               <Tweets />
             </div>*/}
+              <div className='home-partners'>
+                <Partners />
+              </div>
           </div>
         </div>
         <Notifications />

@@ -10,6 +10,10 @@
     inset -0px 0px 3px #fee4ab, inset 0px -0px 3px #fee4ab, -0px 0px 3px #fee4ab, 0px -0px 3px #fee4ab;
 }
 
+.home-horizontal .event-image {
+  min-width: 75px;
+}
+
 .home-horizontal .event-image > img {
   height: 78px;
 }

@@ -12,17 +12,17 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .home-vertical .event-image > img {
   max-width: 100%;
   max-height: 100%;
-  width: 100%;
 }
 .home-vertical .event-informations {
   width: 100%;
 }
 .home-vertical .event-informations > * {
-  color: black;
+  color: white;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 3vw;

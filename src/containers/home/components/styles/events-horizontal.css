@@ -2,31 +2,20 @@
   width: 100%;
   height: 84px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 20px 0;
   border: 1px solid white;
-  box-shadow:
-    inset 0px 0px 3px  #FEE4AB,
-    inset -0px -0px 3px  #FEE4AB,
-    0px 0px 3px  #FEE4AB,
-    -0px -0px 3px  #FEE4AB,
-    inset -0px 0px 3px  #FEE4AB,
-    inset 0px -0px 3px  #FEE4AB,
-    -0px 0px 3px  #FEE4AB,
-    0px -0px 3px  #FEE4AB;
+  box-shadow: inset 0px 0px 3px #fee4ab, inset -0px -0px 3px #fee4ab, 0px 0px 3px #fee4ab, -0px -0px 3px #fee4ab,
+    inset -0px 0px 3px #fee4ab, inset 0px -0px 3px #fee4ab, -0px 0px 3px #fee4ab, 0px -0px 3px #fee4ab;
 }
-.home-horizontal .event-main > .event-image {
-  width: 200px;
-  height: 112px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.home-horizontal .event-image {
+  min-width: 75px;
 }
+
 .home-horizontal .event-image > img {
-  width: 100%;
-  height: 100%;
+  height: 78px;
 }
 .home-horizontal .event-image > .event-name {
   position: absolute;
@@ -67,4 +56,3 @@
 .home-horizontal .event-informations > .place {
   font-size: 1.5vw;
 }
-

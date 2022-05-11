@@ -4,18 +4,30 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 75%;
-  background-color: rgba(14, 8, 74, 0.5);
-  border: 5px solid rgba(14, 8, 74, 0);
+  height: 90%;
+  background-color: transparent;
+  border: 2px solid white;
+  box-shadow:
+    inset 2px 2px 20px  #9B1F1F,
+    inset -2px -2px 20px  #9B1F1F,
+    2px 2px 20px  #9B1F1F,
+    -2px -2px 20px  #9B1F1F,
+    inset 2px 2px 20px  #9B1F1F,
+    inset -2px -2px 20px  #9B1F1F,
+    2px 2px 20px  #9B1F1F,
+    -2px -2px 20px  #9B1F1F;
   border-radius: 30px;
-  padding: 30px;
+  padding: 2em;
+  background-color: rgba(0, 0, 0, 0.36);
+  margin-right: 44px;
 }
 
-.home-events > * {
-  color: black;
-}
-.home-events > h1 {
-  color: white;
+.home-events>h1{
+  color: transparent;
+  -webkit-text-stroke: 2px #FEE4AB;
+  font-size: 3.2vw;
+  text-shadow:  
+              0px 0px 10px #FEE4AB;
 }
 
 .events-container {
@@ -29,7 +41,9 @@
   padding: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.36);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
 }
 .event-main > .event-image {
   height: 90%;
@@ -40,6 +54,7 @@
 .event-image > img {
   max-width: 100%;
   max-height: 100%;
+  border-radius: 10px;
 }
 .event-image > .event-name {
   position: absolute;

@@ -152,6 +152,7 @@ class ArtistDrawer extends React.Component {
             <Option value="twitter">Twitter</Option>
             <Option value="instagram">Instagram</Option>
             <Option value="youtube">Youtube</Option>
+            <Option value="spotify">Spotify</Option>
             <Option value="web">Site web</Option>
           </Select>
         </Form.Item>

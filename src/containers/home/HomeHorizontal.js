@@ -23,17 +23,6 @@ class HomeHorizontal extends React.Component {
             <Time />
             <Events horizontal />
           </div>
-          <div className='home-right'>
-            <div className='home-tweets'>
-              <span className='tweets-title'>
-                Vos tweets avec le #galautt2019
-              </span>
-              <Tweets />
-            </div>
-          </div>
-          <div className='home-footer'>
-            <Messages />
-          </div>
         </div>
         <Notifications />
       </React.Fragment>

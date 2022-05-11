@@ -36,7 +36,9 @@
 }
 .home-vertical .home-events > h1 {
   width: 100%;
-  font-size: 3vw;
+  font-size: 4.5vw;
+  text-align: center;
+  margin-top: -0.3em;
 }
 
 .home-vertical .event-informations > span {

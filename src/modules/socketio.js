@@ -78,7 +78,7 @@ export const startSocketIO = () => {
         if (timeout) clearTimeout(timeout)
         timeout = setTimeout(
           () => dispatch({ type: SET_NOTIFICATION, payload: null }),
-          15000
+          process.env.REACT_APP_NOTIF_TIMEOUT
         )
       })
     } catch (err) {

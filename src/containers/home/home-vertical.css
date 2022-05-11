@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'LemonMilk';
-  src: url(./assets/fonts/LemonMilk.otf);
+  font-family: 'Hero';
+  src: url(./assets/fonts/HeroNewRegular.otf);
 }
 
 .home {
@@ -8,16 +8,17 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'LemonMilk';
+  font-family: 'Hero';
   font-size: 16px;
   height: 100%;
 }
 .home-vertical {
   background-color: #282660;
-  background-image: url('./assets/background-vertical.png');
+  background-image: url('./assets/background-horizontal.png');
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 20px;
 }
 .home-vertical .home-top {
   width: 100%;
@@ -25,19 +26,23 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 4%;
-  height: 20%;
+  flex-grow: 1;
+  margin-bottom: 2%;
 }
 .home-vertical .home-middle {
   display: flex;
-  align-items: flex-start;
+  /*align-items: flex-start;*/
   justify-content: space-evenly;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 80%;
+  /*height: 80%;*/
+  flex-grow: 2;
+  row-gap: 20px;
 }
 .home-vertical .home-middle > * {
   margin-left: 20px;
   margin-right: 20px;
+  width: 70%;
 }
 .home-vertical .home-tweets {
   width: 80%;
@@ -57,16 +62,10 @@
   font-size: 2vw;
   text-align: center;
 }
-.home-vertical .home-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 5%;
-  width: 100%;
-  background-color: white;
-}
+
 .home-vertical .home-logo {
-  width: 50%;
+  width: 40%;
+  margin-left: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,27 +77,34 @@
   align-items: center;
   margin-top: 20px;
 }
-.home-vertical .home-partners {
-  width: 24%;
-}
+
 .home-vertical .home-partners > .partners {
-  width: 90%;
+  width: 70%;
+  margin-left: 17%;
+  margin-bottom: 7%;
 }
 .home-vertical .home-logo > img {
   width: 90%;
+  
 }
 .home-vertical .home-time {
-  color: white;
   padding: 20px;
-  font-size: 50px;
 }
+.home-time{
+  letter-spacing: -0.2rem;
+  font-size: 5.5em;
+  -webkit-text-stroke: 2px #FEE4AB  ; /* width and color */
+  text-shadow:  
+              3px 0px 10px #FEE4AB;
+
+  color: transparent;
+}
+
 .home-vertical .partners {
   margin-top: 40px;
   padding: 10px;
   width: 50%;
-  background-color: rgba(14, 8, 74, 0.9);
-  border: 5px solid rgba(14, 8, 74, 0);
-  border-radius: 30px;
+  
 }
 .home-vertical .partners-container {
   position: relative;
